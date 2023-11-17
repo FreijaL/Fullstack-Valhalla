@@ -4,3 +4,11 @@
     @include device-size;
     overflow: hidden;
 }
+
+.menuPageMain {
+    min-height: 100vh;
+    padding: 2rem 0;
+    background-color: $primaryWhite;
+    @include flex-column;
+    justify-content: start;
+}

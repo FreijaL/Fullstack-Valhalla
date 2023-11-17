@@ -1,11 +1,11 @@
 @use '../variables' as *;
 
 .categoryScrollBarContainer {
-    height: 160px;
+    height: 200px;
     display: flex;
     gap: 10px;
     overflow-x: scroll;
-    padding: 0 1rem;
+    padding: 1rem;
 }
 
 .categoryCard {
@@ -14,9 +14,10 @@
     gap: .5rem;
     padding: 1rem;
     width: 500px;
-    border: 2px solid $primaryOrange;
+    //border: 2px solid $primaryOrange;
     border-radius: $primaryBorderRadius;
     box-shadow: $defaultShadow;
+    background-color: $primaryWhite;
 }
 
 .categoryScrollBarContainer::-webkit-scrollbar {

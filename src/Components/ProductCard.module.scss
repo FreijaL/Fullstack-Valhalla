@@ -1,0 +1,43 @@
+@use '../variables' as *;
+
+.productCardContainer {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: .5rem;
+    padding-top: .5rem;
+    background-color: $primaryCream;
+    box-shadow: $defaultShadow;
+    border-radius: $primaryBorderRadius;
+}
+
+.productCardImage {
+    width: 110px;
+    height: 110px;
+    padding-bottom: .3rem;
+}
+
+.productCardInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+
+.productCardInfo h3 {
+    font-family: $titleFont;
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.productCardInfo p {
+    height: auto;
+    width: 8rem;
+    font-size: 12px;
+}
+
+.productCardButton {
+    align-self: end;
+}

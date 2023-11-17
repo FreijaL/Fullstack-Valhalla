@@ -33,7 +33,7 @@ function CategoryScrollBar() {
                 <section className={style.categoryCardImageContainer}>
                     <img className={style.categoryCardImage} src="./images/desert.png" alt="drink-category" />
                 </section>
-                <h3 className={style.categoryHeading}>Desert</h3>
+                <h3 className={style.categoryHeading}>Dessert</h3>
             </section>
         </aside>
     )
