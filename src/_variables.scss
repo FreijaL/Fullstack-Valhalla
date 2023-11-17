@@ -22,6 +22,7 @@ $thinFont: 200;
     background-color: $primaryCream;
     border-radius: 32px;
     font-family: $breadFont;
+    overflow: hidden;
 }
 
 @mixin flex-column {
