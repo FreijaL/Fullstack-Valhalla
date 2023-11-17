@@ -6,7 +6,7 @@ function MenuPage() {
 
     return (
         <section className={style.menuPageContainer}>
-            {/* <NavMenu /> */}
+            <NavMenu />
             <Header />
             <main>
                 <h1>menu</h1>

@@ -2,4 +2,5 @@
 
 .menuPageContainer {
     @include device-size;
+    overflow: hidden;
 }
