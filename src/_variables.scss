@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Rokkitt:wght@100;200;300;400;500&display=swap');
+
+$primaryOrange: #F9A66C;
+$primaryRed: #F17A7E;
+$primaryYellow: #FFC94B;
+$primaryGreen: #517441;
+$primaryWhite: #F9FAF4;
+$primaryCream: #FDF3E5;
+
+$primaryBorderRadius: 10px;
+$defaultShadow: 4px 4px 10px 0px rgba(26, 26, 26, 0.5);
+
+$titleFont: "Rokkitt";
+$breadFont: "Roboto";
+
+$defaultFont: 400;
+$thinFont: 200;
+
+@mixin device-size {
+    width: 450px;
+    min-height: 100vh;
+    background-color: $primaryCream;
+    border-radius: 32px;
+    font-family: $breadFont;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

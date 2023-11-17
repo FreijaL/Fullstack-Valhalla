@@ -1,0 +1,17 @@
+@use '../variables.scss' as *;
+
+.splashContainer {
+    @include device-size;
+    @include flex-column;
+    font-family: $titleFont;
+}
+
+.splashH1 {
+    font-size: 60px;
+    font-weight: 500;
+}
+
+.splashH2 {
+    font-size: 40px;
+    font-weight: 300;
+}
