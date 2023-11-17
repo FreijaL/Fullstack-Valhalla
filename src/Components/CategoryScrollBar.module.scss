@@ -1,0 +1,35 @@
+@use '../variables' as *;
+
+.categoryScrollBarContainer {
+    height: 160px;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    padding: 0 1rem;
+}
+
+.categoryCard {
+    height: 150px;
+    @include flex-column;
+    gap: .5rem;
+    padding: 1rem;
+    width: 500px;
+    border: 2px solid $primaryOrange;
+    border-radius: $primaryBorderRadius;
+    box-shadow: $defaultShadow;
+}
+
+.categoryScrollBarContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.categoryCardImageContainer {
+    width: 80px;
+    height: 80px;
+}
+
+.categoryCardImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
