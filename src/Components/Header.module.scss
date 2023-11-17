@@ -1,0 +1,34 @@
+@use '../variables' as *;
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.headerMenuIcon {
+    width: 45px;
+}
+
+.headerName {
+    display: flex;
+    gap: .8rem;
+    align-items: end;
+    position: relative;
+    top: -2px;
+}
+
+.headerNamePizzaIcon {
+    width: 26px;
+}
+
+.headerNameH1 {
+    font-family: $titleFont;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.headerCartIcon {
+    width: 35px;
+}
