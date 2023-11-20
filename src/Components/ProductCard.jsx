@@ -1,5 +1,5 @@
 import style from './ProductCard.module.scss';
-import SmallButton from '../Components/SmallButton';
+import MiniButton from './MiniButton';
 
 
 function ProductCard() {
@@ -13,7 +13,7 @@ function ProductCard() {
                 <h3>110 kr</h3>
             </section>
             <section className={style.productCardButton}>
-                <SmallButton />
+                <MiniButton />
             </section>
         </section>
     )

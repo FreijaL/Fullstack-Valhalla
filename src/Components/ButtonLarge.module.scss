@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.buttonLarge {
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    border-radius: $primaryBorderRadius;
+    background-color: $primaryOrange;
+    color: $primaryWhite;
+    font-size: 18px;
+    box-shadow: $defaultShadow;
+}

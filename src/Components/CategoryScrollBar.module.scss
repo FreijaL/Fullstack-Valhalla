@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 .categoryScrollBarContainer {
-    height: 200px;
+    height: 170px;
     display: flex;
     gap: 10px;
     overflow-x: scroll;
@@ -9,7 +9,7 @@
 }
 
 .categoryCard {
-    height: 150px;
+    height: 120px;
     @include flex-column;
     gap: .5rem;
     padding: 1rem;

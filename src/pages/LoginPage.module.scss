@@ -1,2 +1,21 @@
 @use '../variables.scss' as *;
 
+.loginPageContainer {
+    @include device-size;
+}
+
+.loginPageMain {
+    @include flex-column;
+    gap: 1rem;
+}
+
+.loginPageLogo {
+    width: 12rem;
+    margin-bottom: 2rem;
+}
+
+.forgotPassword {
+    position: relative;
+    left: 78px;
+    bottom: 10px;
+}

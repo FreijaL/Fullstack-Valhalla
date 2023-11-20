@@ -5,6 +5,7 @@ import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
 
 
+
 function MenuPage() {
 
     return (
@@ -12,6 +13,10 @@ function MenuPage() {
             <Header />
             <CategoryScrollBar />
             <main className={style.menuPageMain}>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
                 <ProductCard />
             </main>
         </section>
