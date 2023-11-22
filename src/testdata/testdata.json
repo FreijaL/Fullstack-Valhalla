@@ -1,0 +1,131 @@
+{
+    "pizza": [],
+    "kebab": [
+        {
+            "title": "Kebab med bröd",
+            "price": "75kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Kebabrulle",
+            "price": "95kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Kebabtallrik",
+            "price": "110kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Gyros med bröd",
+            "price": "70kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Gyrosrulle",
+            "price": "90kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Gyrostallrik",
+            "price": "105kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        }
+    ],
+    "extras": [
+        {
+            "title": "Bebsi",
+            "price": "15kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Funtu",
+            "price": "15kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Sprote",
+            "price": "15kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Pommes Frites",
+            "price": "30kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Loaded Fries",
+            "price": "45kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Pizzasallad",
+            "price": "10kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Vitlökssås",
+            "price": "20kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        }
+    ],
+    "dessert": [
+        {
+            "title": "Sundae",
+            "price": "40kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Kladdkaka",
+            "price": "35kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Kanelbulle",
+            "price": "25kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Wienerbröd",
+            "price": "20kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Kärleksmums",
+            "price": "30kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        }
+    ],
+    "addIngredients": [
+        {
+            "title": "Extra Ost",
+            "price": "5kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Extra sås",
+            "price": "5kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Oxfilé",
+            "price": "50kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Kebab",
+            "price": "15kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Gyros",
+            "price": "15kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        },
+        {
+            "title": "Pommes",
+            "price": "15kr",
+            "img": "../../public/svg/pizza-slice.svg"
+        }
+    ]
+}
