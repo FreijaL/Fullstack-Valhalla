@@ -20,6 +20,11 @@
     background-color: $primaryWhite;
 }
 
+.categoryCard:hover {
+    cursor: pointer;
+    scale: 1.02;
+}
+
 .categoryScrollBarContainer::-webkit-scrollbar {
     display: none;
 }

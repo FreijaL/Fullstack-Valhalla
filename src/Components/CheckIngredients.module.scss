@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 .checkIngredientsForm {
-    width: 20rem;
+    width: 24rem;
     height: 2rem;
     display: flex;
     align-items: center;
@@ -14,23 +14,12 @@
     align-items: center;
 }
 
-.checkIngredientsContainer input[type='radio']:before {
+.checkIngredientsInput {
     width: 20px;
     height: 20px;
-    display: inline-block;
-    background-color: #F9A66C;
+    accent-color: $primaryOrange;
 }
 
-// .checkIngredientsContainer input[type='radio']:checked:after {
-//     width: 20px;
-//     height: 20px;
-//     background-color: #F9A66C;
-// }
-
-// .checkIngredientsContainer input[type='radio']:before {
-//     display: inline-block;
-//     color: $primaryOrange;
-// }
 
 .checkIngredientsLabel {
     margin-left: .5rem;

@@ -13,6 +13,11 @@
     border-radius: $primaryBorderRadius;
 }
 
+.productCardContainer:hover {
+    cursor: pointer;
+    scale: 1.02;
+}
+
 .productCardImage {
     width: 110px;
     height: 110px;
@@ -41,3 +46,7 @@
 .productCardButton {
     align-self: end;
 }
+
+// .productCardButton:hover {
+//     cursor: pointer;
+// }
