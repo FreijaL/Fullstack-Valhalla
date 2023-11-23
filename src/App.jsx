@@ -1,5 +1,9 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fillStock } from './actions/ingredientsAction';
+import data from './data.json';
 
 import SplashPage from './pages/SplashPage';
 import MenuPage from './pages/MenuPage';
@@ -17,6 +21,21 @@ import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
 
 function App() {
+
+  const dispatch = useDispatch();
+  const [ingredients, setIngredients] = useState([]);
+
+  useEffect(() => {
+    fetch(data)
+    .then(response => response.json())
+    .then(data => setIngredients(data))
+  }, [] );
+
+  useEffect(() => {
+    if (ingredients.legth > 0) {
+      dispatch(fillStock(ingredients));
+    }
+  }, [ingredients]);
 
   return (
     <BrowserRouter>
@@ -40,4 +59,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

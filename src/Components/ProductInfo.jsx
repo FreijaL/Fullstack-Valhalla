@@ -37,9 +37,13 @@ function ProductInfo() {
                 <section>
                     <h3>Lägg till</h3>
                     <section className={style.productInfoIngredients}>
+                        {
+                            ingredients &&
+                            ingredients.map((ingredient) => <CheckIngredients key={ingredient.id} ingredient={ingredient} />)
+                        }
+                        {/* <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
                         <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
-                        <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
-                        <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
+                        <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/> */}
                     </section>
                 </section>
                 <section className={style.productInfoMoreOptions}>
