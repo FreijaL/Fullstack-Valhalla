@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fillStock } from './actions/ingredientsAction';
-import data from './data.json';
 
 import SplashPage from './pages/SplashPage';
 import MenuPage from './pages/MenuPage';
@@ -26,13 +25,18 @@ function App() {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
-    fetch(data)
-    .then(response => response.json())
-    .then(data => setIngredients(data))
-  }, [] );
+    async function fetchData() {
+      const response = await fetch('./data.json');
+      const ingredients = await response.json();
+      setIngredients(ingredients);
+    };
+    //console.log(ingredients);
+    fetchData()
+},[] );
 
   useEffect(() => {
-    if (ingredients.legth > 0) {
+    if (ingredients.length > 0) {
+      console.log(ingredients);
       dispatch(fillStock(ingredients));
     }
   }, [ingredients]);

@@ -1,6 +1,6 @@
-export const buyIngredient = (ingredient) => ({
+export const buyIngredient = (ingredients) => ({
     type: "BUY_INGREDIENT",
-    payload: ingredient
+    payload: ingredients
 });
 
 export const fillStock = (ingredients) => ({

@@ -3,12 +3,12 @@ import { buyIngredient } from '../actions/ingredientsAction';
 
 import style from './CheckIngredients.module.scss';
 
-function CheckIngredients({ingredient}) {
-
+function CheckIngredients() {
+    const [ingredients, setIngredients] = useState([]);
     const dispatch = useDispatch();
-
+    
     function addIngredientToCart() { 
-        dispatch(buyIngredient(ingredient))
+        dispatch(buyIngredient(ingredients))
     };
 
     return(
@@ -17,15 +17,15 @@ function CheckIngredients({ingredient}) {
                 <input 
                     className={style.checkIngredientsInput} 
                     type="checkbox" 
-                    id={ingredient.id} 
-                    name={ingredient.name} 
-                    value={ingredient.name}
+                    id={ingredients.id} 
+                    name={ingredients.name} 
+                    value={ingredients.name}
                     
                     action={addIngredientToCart}
                     />
-                <label className={style.checkIngredientsLabel} htmlFor={ingredient.name}>{ingredient.name}</label>
+                <label className={style.checkIngredientsLabel} htmlFor={ingredients.name}>{ingredients.name}</label>
             </section>
-            <p className={style.checkIngredientsPrice}>{ingredient.price}</p>
+            <p className={style.checkIngredientsPrice}>{ingredients.price}</p>
         </form>
     )
 };

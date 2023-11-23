@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 //import { useDispatch } from 'react-redux';
 //import { buyIngredients } from '../actions/ingredientsAction';
 
@@ -9,11 +9,20 @@ import ButtonSmall from '../Components/ButtonSmall';
 function ProductInfo() {
     const [ingredients, setIngredients] = useState([]);
 
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const response = await fetch('./data.json');
+    //         const ingredients = await response.json();
+    //         setIngredients(ingredients);
+    //     };
+    //     fetchData();
+    // }, [ingredients])
     // const useDispatch = useDispatch();
 
     // function addIngredientToCart() {
     //     dispatch(buyIngredients(ingredient))
     // };
+    console.log(ingredients)
 
     return(
         <section className={style.productInfoContainer}>
