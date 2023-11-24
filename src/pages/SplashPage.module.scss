@@ -1,7 +1,7 @@
 @use '../variables.scss' as *;
 
 .splashContainer {
-    @include device-size;
+    // @include device-size;
     @include flex-column;
     font-family: $titleFont;
 }

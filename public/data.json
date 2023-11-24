@@ -1,42 +1,23 @@
 [
     {
         "name": "Extra ost",
-        "price": "5",
-        "id": "1"
+        "price": 5,
+        "id": 1
     },
     {
         "name": "Skinka",
-        "price": "5",
-        "id": "2"
+        "price": 5,
+        "id": 2
     },
     {
         "name": "Kebab",
-        "price": "15",
-        "id": "3"
+        "price": 15,
+        "id": 3
     },
     {
         "name": "Fälskfile",
-        "price": "15",
-        "id": "4"
-    },
-    {
-        "name": "Pommes",
-        "price": "10",
-        "id": "5"
-    },
-    {
-        "name": "Vitlökssås",
-        "price": "5",
-        "id": "6"
-    },
-    {
-        "name": "Kebabsås",
-        "price": "5",
-        "id": "7"
-    },
-    {
-        "name": "Stark sås",
-        "price": "5",
-        "id": "8"
+        "price": 15,
+        "id": 4
     }
+    
 ]

@@ -10,7 +10,7 @@ import ProductInfo from '../Components/ProductInfo';
 
 function MenuPage() {
 
-    const [openInfo, setOpenInfo] = useState(true);
+    const [openInfo, setOpenInfo] = useState(false);
 
     return (
         <section className={style.menuPageContainer}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 //import { useDispatch } from 'react-redux';
 //import { buyIngredients } from '../actions/ingredientsAction';
 
@@ -9,6 +10,16 @@ import ButtonSmall from '../Components/ButtonSmall';
 function ProductInfo() {
     const [ingredients, setIngredients] = useState([]);
 
+    const state = useSelector((state) => {
+        return state;
+    });
+
+    useEffect(() => {
+        setIngredients(state.ingredients);
+        // setCandiesFromStore(state.candies);
+    }, [state]);
+
+
     // useEffect(() => {
     //     async function fetchData() {
     //         const response = await fetch('./data.json');
@@ -16,8 +27,8 @@ function ProductInfo() {
     //         setIngredients(ingredients);
     //     };
     //     fetchData();
-    // }, [ingredients])
-    // const useDispatch = useDispatch();
+    // }, [])
+    //const useDispatch = useDispatch();
 
     // function addIngredientToCart() {
     //     dispatch(buyIngredients(ingredient))
@@ -36,11 +47,14 @@ function ProductInfo() {
                     <section className={style.productInfoIngredients}>
                         {
                             ingredients &&
-                            ingredients.map((ingredient) => <CheckIngredients key={ingredient.id} ingredient={ingredient} />)
+                            ingredients.map((ingredient) => 
+                                <CheckIngredients 
+                                    key={ingredient.id} 
+                                    ingredient={ingredient}
+                                    name={ingredient.name}
+                                    id={ingredient.id}
+                                />)
                         }
-                        {/* <CheckIngredients id='ost' value='ost' name='default' label='ost' /> */}
-                        {/* <CheckIngredients id='ost' value='ost' name='default' label='ost' />
-                        <CheckIngredients id='ost' value='ost' name='default' label='ost' /> */}
                     </section>
                 </section>
                 <section>
@@ -48,11 +62,14 @@ function ProductInfo() {
                     <section className={style.productInfoIngredients}>
                         {
                             ingredients &&
-                            ingredients.map((ingredient) => <CheckIngredients key={ingredient.id} ingredient={ingredient} />)
+                            ingredients.map((ingredient) => 
+                                <CheckIngredients 
+                                    key={ingredient.id} 
+                                    ingredient={ingredient} 
+                                    name={ingredient.name} 
+                                    price={ingredient.price} 
+                                />)
                         }
-                        {/* <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
-                        <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
-                        <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/> */}
                     </section>
                 </section>
                 <section className={style.productInfoMoreOptions}>

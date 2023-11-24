@@ -1,11 +1,25 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { buyIngredient } from '../actions/ingredientsAction';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import style from './CheckIngredients.module.scss';
 
-function CheckIngredients() {
-    const [ingredients, setIngredients] = useState([]);
-    const dispatch = useDispatch();
+function CheckIngredients({name, price, id}) {
+    // const [ingredients, setIngredients] = useState([]);
+    // const dispatch = useDispatch();
+
+    // const [ingredients, setIngredients] = useState([]);
+
+    // const state = useSelector((state) => {
+    //     return state;
+    // });
+
+    // useEffect(() => {
+    //     setIngredients(state.ingredients);
+    //     // setCandiesFromStore(state.candies);
+    // }, [state]);
     
     function addIngredientToCart() { 
         dispatch(buyIngredient(ingredients))
@@ -17,15 +31,15 @@ function CheckIngredients() {
                 <input 
                     className={style.checkIngredientsInput} 
                     type="checkbox" 
-                    id={ingredients.id} 
-                    name={ingredients.name} 
-                    value={ingredients.name}
+                    id={id} 
+                    name={name} 
+                    value={name}
                     
-                    action={addIngredientToCart}
+                    onChange={addIngredientToCart}
                     />
-                <label className={style.checkIngredientsLabel} htmlFor={ingredients.name}>{ingredients.name}</label>
+                <label className={style.checkIngredientsLabel} htmlFor={name}>{name}</label>
             </section>
-            <p className={style.checkIngredientsPrice}>{ingredients.price}</p>
+            <p className={style.checkIngredientsPrice}>{price}kr</p>
         </form>
     )
 };

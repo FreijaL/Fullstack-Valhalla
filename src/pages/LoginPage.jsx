@@ -14,12 +14,14 @@ function LoginPage() {
             <Header />
             <main className={style.loginPageMain}>
                 <img className={style.loginPageLogo} src="./svg/pizza-slice.svg" alt="pizza-logo" />
-                <LoginField label='Användarnamn:' type='text'/>
-                <LoginField label='Lösenord:' type='password'/>
-                <p className={style.forgotPassword}>Glömt lösenord?</p>
+                <section className={style.loginPageInputContainer}>
+                    <LoginField label='Användarnamn:' type='text'/>
+                    <LoginField label='Lösenord:' type='password'/>
+                    <p className={style.forgotPassword}>Glömt lösenord?</p>
 
-                <ButtonSmallGreen title='Logga in' />
-                <ButtonSmall title='Skapa konto' />
+                    <ButtonSmallGreen title='Logga in' />
+                    <ButtonSmall title='Skapa konto' />
+                </section>
             </main>
         </section>
     )

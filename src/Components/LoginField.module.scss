@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 .formContainer {
-    width: 60%;
+    width: 100%;
     @include flex-column;
     align-items: start;
     font-size: 14px;

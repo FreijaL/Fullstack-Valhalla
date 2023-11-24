@@ -1,7 +1,7 @@
 @use '../variables.scss' as *;
 
 .loginPageContainer {
-    @include device-size;
+    width: 199vw
 }
 
 .loginPageMain {
@@ -14,8 +14,15 @@
     margin-bottom: 2rem;
 }
 
+.loginPageInputContainer {
+    @include flex-column;
+    gap: 1rem;
+    width: 60%;
+}
+
 .forgotPassword {
-    position: relative;
-    left: 78px;
-    bottom: 10px;
+    align-self: end;
+    // position: relative;
+    // left: 78px;
+    // bottom: 10px;
 }

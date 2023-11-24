@@ -1,7 +1,6 @@
 @use '../variables.scss' as *;
 
 .menuPageContainer {
-    @include device-size;
     overflow: hidden;
 }
 
