@@ -1,25 +1,27 @@
+// Order.js
 import React, { useState } from 'react';
+import styles from './Order.scss';
 
 const Order = ({ order }) => {
   const [isCompleted, setIsCompleted] = useState(false);
-  // Function to handle marking an order as completed
+
   const markAsCompleted = () => {
     setIsCompleted(true);
     // Additional logic to update the server state
   };
 
   return (
-    <div className={`order ${isCompleted ? 'completed' : ''}`}>
-      <div className="order-header">
+    <div className={`${styles.orderCard} ${isCompleted ? styles.orderCardCompleted : ''}`}>
+      <div className={styles.orderCardHeader}>
         <span>{order.id}</span>
         <span>{order.timeRemaining}</span>
       </div>
-      <div className="order-details">
+      <div className={styles.orderCardDetails}>
         {order.pizzas.map((pizza) => (
           <p key={pizza.id}>{pizza.name}</p>
         ))}
       </div>
-      <button onClick={markAsCompleted}>KLAR</button>
+      <button onClick={markAsCompleted}>Klar</button>
     </div>
   );
 };
