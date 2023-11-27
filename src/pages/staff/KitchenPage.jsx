@@ -3,6 +3,7 @@
 import style from './KitchenPage.module.scss';
 import React from 'react';
 import OrderList from '../../Components/OrderList';
+import Header from '../../Components/Header';
 
 function KitchenPage() {
   // State management behövs
@@ -74,7 +75,7 @@ function KitchenPage() {
 
   return (
     <div className={style.kitchenContainer}>
-      <h1>Valhalla Pizza</h1>
+      <Header />
       <OrderList orders={orders} />
     </div>
   );
