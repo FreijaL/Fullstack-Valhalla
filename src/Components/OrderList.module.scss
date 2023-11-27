@@ -1,0 +1,18 @@
+$order-list-gap: 1rem; // Space between the grid items
+
+.orderList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Creates two columns with equal width
+    gap: $order-list-gap; // Sets the gap between grid items
+    padding: $order-list-gap; // Optional: if you want padding around the entire grid
+    margin: 0 auto; // Centers the grid within its container
+
+    @media (max-width: 468px) {
+        // Adjusts to a single column layout on smaller screens
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

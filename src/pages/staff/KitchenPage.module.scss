@@ -1,2 +1,10 @@
 @use '../../variables.scss' as *;
 
+body {
+    background-color: $primaryCream;
+}
+
+.kitchenContainer {
+    background-color: $primaryCream;
+    border-radius: 0px;
+}

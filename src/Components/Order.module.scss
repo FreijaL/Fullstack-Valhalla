@@ -1,0 +1,74 @@
+@use '../variables' as *;
+
+/* .orderCard {
+    background-color: white;
+}
+
+.orderCardCompleted {
+    background-color: $primaryYellow;
+
+} */
+
+// Order.module.scss
+$font-stack: 'Helvetica', 'Arial', sans-serif;
+$font-color: #333;
+$bg-color: #f6f6f6;
+$primary-color: #eb5757;
+$secondary-color: #828282;
+$highlight-color: #27ae60;
+$border-color: #e0e0e0;
+
+.orderCard {
+    font-family: $font-stack;
+    color: $font-color;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    &Header {
+        background-color: $primary-color;
+        color: white;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &Details {
+        padding: 0.75rem;
+
+        p {
+            margin: 0.25rem 0;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            color: $secondary-color;
+        }
+    }
+
+    &Completed {
+        background-color: lighten($highlight-color, 30%);
+        border-color: $highlight-color;
+
+        &Header {
+            background-color: $highlight-color;
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 0.5rem 0;
+        background-color: $highlight-color;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: darken($highlight-color, 10%);
+        }
+    }
+}

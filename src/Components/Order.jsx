@@ -1,6 +1,6 @@
 // Order.js
 import React, { useState } from 'react';
-import styles from './Order.scss';
+import styles from './Order.module.scss';
 
 const Order = ({ order }) => {
   const [isCompleted, setIsCompleted] = useState(false);
