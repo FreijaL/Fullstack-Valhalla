@@ -1,2 +1,34 @@
 @use '../../variables.scss' as *;
 
+.aboutPageContainer {
+    width: 100vw;
+    @include flex-column;  
+    align-items: start; 
+    background-color: $primaryCream;
+}
+
+.aboutPageImage {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.aboutPageAboutSection, .aboutPageContactContainer {
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.aboutPageContactInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 6rem;
+}
+
+.aboutPageContactSection {
+    width: 35%;
+}
+
+.aboutPageContactSection h4 {
+    padding-bottom: .5rem;
+}

@@ -1,10 +1,14 @@
 @use '../variables' as *;
 
 .headerContainer {
+    position: fixed;
+    top: 0;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 1rem;
+    background-color: $primaryCream;
 }
 
 .headerMenuIcon {

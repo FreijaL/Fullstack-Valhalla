@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-//import { useDispatch } from 'react-redux';
-//import { buyIngredients } from '../actions/ingredientsAction';
 
 import style from './ProductInfo.module.scss';
 import CheckIngredients from '../Components/CheckIngredients';
 import ButtonSmall from '../Components/ButtonSmall';
+
 
 function ProductInfo() {
     const [ingredients, setIngredients] = useState([]);
@@ -16,23 +15,10 @@ function ProductInfo() {
 
     useEffect(() => {
         setIngredients(state.ingredients);
-        // setCandiesFromStore(state.candies);
     }, [state]);
 
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch('./data.json');
-    //         const ingredients = await response.json();
-    //         setIngredients(ingredients);
-    //     };
-    //     fetchData();
-    // }, [])
-    //const useDispatch = useDispatch();
-
-    // function addIngredientToCart() {
-    //     dispatch(buyIngredients(ingredient))
-    // };
+    
     console.log(ingredients)
 
     return(

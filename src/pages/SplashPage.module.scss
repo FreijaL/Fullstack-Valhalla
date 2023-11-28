@@ -1,9 +1,10 @@
 @use '../variables.scss' as *;
 
 .splashContainer {
-    // @include device-size;
+    width: 100%;
     @include flex-column;
     font-family: $titleFont;
+    background-color: $primaryCream;
 }
 
 .splashH1 {

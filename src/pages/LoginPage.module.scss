@@ -1,7 +1,9 @@
 @use '../variables.scss' as *;
 
 .loginPageContainer {
-    width: 199vw
+    width: 100vw;
+    margin-top: 7rem;
+    background-color: $primaryCream;
 }
 
 .loginPageMain {
@@ -22,7 +24,6 @@
 
 .forgotPassword {
     align-self: end;
-    // position: relative;
-    // left: 78px;
-    // bottom: 10px;
+    position: relative;
+    top: -10px;
 }

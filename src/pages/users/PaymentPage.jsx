@@ -4,7 +4,7 @@ function PaymentPage() {
 
     return (
         <>
-         <h1>payment</h1>
+            <h1>payment</h1>
         </>
     )
 };
