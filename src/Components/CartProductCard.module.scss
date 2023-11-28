@@ -1,0 +1,33 @@
+@use '../variables' as *; 
+
+.cartProductCardContainer {
+    width: 100%;
+    height: auto;
+    background-color: $primaryCream;
+    border-radius: $primaryBorderRadius;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 6rem;
+    row-gap: 2rem;
+    padding: 1rem 0 0 1rem;
+    font-size: 20px;
+}
+
+.changeValue {
+    width: 6rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.changeValue button {
+    width: 2rem;
+    height: 1rem;
+    appearance: none;
+    border: none;
+    background-color: $primaryCream;
+    font-size: 20px;
+    font-weight: 600;
+}

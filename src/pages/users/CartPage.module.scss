@@ -1,5 +1,25 @@
 @use '../../variables.scss' as *;
 
 .cartPageContainer {
-    @include device-size;
+    width: 100vw;
+    background-color: $primaryWhite;
+}
+
+.cartPageMainContainer {
+    margin-top: 6.9rem;
+    padding: 1rem;
+    @include flex-column;
+    gap: 2rem;
+}
+
+.cartPageDeliveryContainer {
+    // margin-top: 6.9rem;
+    // padding: 1rem;
+    width: 100%;
+    height: auto;
+    
+}
+
+.cartPageProductContainer {
+    width: 100%;
 }

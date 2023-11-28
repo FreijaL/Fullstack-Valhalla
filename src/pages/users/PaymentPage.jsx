@@ -10,7 +10,7 @@ function PaymentPage() {
         <section className={style.paymentPageContainer}>
             <Header />
             <main className={style.paymentPageMain}>
-                <DeliveryOption />
+                <DeliveryOption title='Välj leveranssätt:' />
                 <section className={style.paymentPageOptionContainer}>
                     <p>Betalningsalternativ</p>
                     <section className={style.paymentPageOption}>
