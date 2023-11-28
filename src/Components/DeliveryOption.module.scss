@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+.deliveryOptionContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $primaryWhite;
+    padding: .5rem 1rem;
+    border-radius: $primaryBorderRadius;
+    box-shadow: $defaultShadow;
+    font-family: $titleFont;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.deliveryOptionContainer select {
+    width: 8rem;
+    border: none;
+    outline: none;
+    background-color: $primaryWhite;
+    font-family: $titleFont;
+    font-size: 20px;
+    font-weight: 500;
+}
+

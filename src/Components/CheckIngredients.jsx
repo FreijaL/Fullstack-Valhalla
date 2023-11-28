@@ -39,7 +39,7 @@ function CheckIngredients({name, price, id}) {
                     />
                 <label className={style.checkIngredientsLabel} htmlFor={name}>{name}</label>
             </section>
-            <p className={style.checkIngredientsPrice}>{price}kr</p>
+            <p className={style.checkIngredientsPrice}>{price} kr</p>
         </form>
     )
 };

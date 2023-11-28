@@ -1,11 +1,14 @@
 import style from './ConfirmationPage.module.scss';
+import Header from '../../Components/Header';
+import OrderConfirmationCard from '../../Components/OrderConfirmationCard';
 
 function ConfirmationPage() {
 
     return (
-        <>
-         <h1>confirmation</h1>
-        </>
+        <main className={style.confirmationPageContainer}>
+            <Header />
+            <OrderConfirmationCard />
+        </main>
     )
 };
 

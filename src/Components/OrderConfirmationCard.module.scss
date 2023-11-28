@@ -1,0 +1,69 @@
+@use '../variables' as *;
+
+.confirmationCardContainer {
+    width: 100vw;
+    background-color: $primaryWhite;
+    @include flex-column;
+    font-family: $titleFont;
+    border-radius: $primaryBorderRadius;
+    padding: 2rem;
+    box-shadow: $defaultShadow;
+}
+
+.confirmationText {
+    font-size: 24px;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.confirmationText h1 {
+    font-weight: 500;
+}
+
+.confirmationOrder {
+    width: 100%;
+}
+
+.confirmationOrderProduct {
+    width: 100%;
+    padding: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.confirmationOrderProductDetail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.productExtra {
+    font-family: $breadFont;
+    font-size: 14px;
+}
+
+.confirmationPrice {
+    // width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 3rem 0 0 0;
+}
+
+.confirmationTime {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.confirmationTimeText {
+    font-family: $breadFont;
+    font-size: 20px;
+}
+
+.confirmationTime h4 {
+    font-weight: 500;
+    font-size: 26px;
+}

@@ -5,6 +5,7 @@
     @include flex-column;  
     align-items: start; 
     background-color: $primaryCream;
+    font-size: 16px;
 }
 
 .aboutPageImage {
@@ -19,6 +20,11 @@
     gap: 1rem;
 }
 
+.aboutPageHeading {
+    font-family: $titleFont;
+    font-weight: 500;
+}
+
 .aboutPageContactInfo {
     display: flex;
     flex-wrap: wrap;
@@ -31,4 +37,7 @@
 
 .aboutPageContactSection h4 {
     padding-bottom: .5rem;
+    font-family: $titleFont;
+    font-size: 20px;
+    font-weight: 500;
 }

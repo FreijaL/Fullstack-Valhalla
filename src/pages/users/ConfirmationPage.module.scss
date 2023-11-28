@@ -1,2 +1,7 @@
 @use '../../variables.scss' as *;
 
+.confirmationPageContainer {
+    width: 100vw;
+    background-color: $primaryCream;
+    @include flex-column;
+}

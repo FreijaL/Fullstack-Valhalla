@@ -15,8 +15,8 @@ function LoginPage() {
             <main className={style.loginPageMain}>
                 <img className={style.loginPageLogo} src="./svg/pizza-slice.svg" alt="pizza-logo" />
                 <section className={style.loginPageInputContainer}>
-                    <LoginField label='Användarnamn:' type='text'/>
-                    <LoginField label='Lösenord:' type='password'/>
+                    <LoginField label='Användarnamn:' type='text' name='user' id='user' />
+                    <LoginField label='Lösenord:' type='password' name='password' id='password' />
                     <p className={style.forgotPassword}>Glömt lösenord?</p>
 
                     <ButtonSmallGreen title='Logga in' />

@@ -9,13 +9,13 @@ function AboutUsPage() {
             <main className={style.aboutPageContainer}>
                 <img className={style.aboutPageImage} src="./images/pizza-oven.png" alt="pizza oven" />
                 <section className={style.aboutPageAboutSection}>
-                    <h2>Om Valhalla</h2>
+                    <h2 className={style.aboutPageHeading}>Om Valhalla</h2>
                     <p>Vi är en ny pizzeria med ett online baserat koncept, vårat mål att leverera kvalité direkt hem till din dörr utan krångel.<br/> 
                         Konceptet grundades 2020 under pandemin då vi fick tänka om kring hur vi hanterar mänsklig kontakt och matlagning. Helt 
                         enkelt att maten kommer till er helt kontaktfritt, detta blev en succé som vi på Valhalla är evigt tacksamma för. </p>
                 </section>
                 <aside className={style.aboutPageContactContainer}>
-                    <h2>Kontakta oss</h2>
+                    <h2 className={style.aboutPageHeading}>Kontakta oss</h2>
                     <section className={style.aboutPageContactInfo}>
                         <section className={style.aboutPageContactSection}>
                             <h4>Adress:</h4>
