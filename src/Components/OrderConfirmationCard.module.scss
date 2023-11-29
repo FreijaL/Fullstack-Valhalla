@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 .confirmationCardContainer {
-    width: 100vw;
+    width: 100%;
     background-color: $primaryWhite;
     @include flex-column;
     font-family: $titleFont;

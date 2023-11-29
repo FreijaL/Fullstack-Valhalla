@@ -2,6 +2,7 @@
 
 .cartProductCardContainer {
     width: 100%;
+    max-width: 30rem;
     height: auto;
     background-color: $primaryCream;
     border-radius: $primaryBorderRadius;
@@ -9,8 +10,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    column-gap: 6rem;
-    row-gap: 1.5rem;
+    column-gap: 7rem;
+    row-gap: .5rem;
     padding: 1rem 0 0 1rem;
     font-size: 20px;
     font-weight: 500;
@@ -31,8 +32,8 @@
 }
 
 .changeValue button {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.5rem;
+    height: 1.5rem;
     appearance: none;
     border: none;
     background-color: $primaryCream;

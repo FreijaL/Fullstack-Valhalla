@@ -5,3 +5,8 @@
     background-color: $primaryCream;
     @include flex-column;
 }
+
+.confirmationPageCardContainer {
+    width: 100%;
+    padding: 1rem;
+}

@@ -7,7 +7,9 @@ function ConfirmationPage() {
     return (
         <main className={style.confirmationPageContainer}>
             <Header />
-            <OrderConfirmationCard />
+            <section className={style.confirmationPageCardContainer}>
+                <OrderConfirmationCard />
+            </section>
         </main>
     )
 };

@@ -13,7 +13,7 @@ function ProductCard() {
                 <h3>110 kr</h3>
             </section>
             <section className={style.productCardButton}>
-                <MiniButton />
+                <MiniButton title='+ Lägg till' />
             </section>
         </section>
     )
