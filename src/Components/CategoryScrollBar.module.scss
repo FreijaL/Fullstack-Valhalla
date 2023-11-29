@@ -25,6 +25,12 @@
     scale: 1.02;
 }
 
+.categoryHeading {
+    font-family: $titleFont;
+    font-weight: 500;
+    font-size: 22px;
+}
+
 .categoryScrollBarContainer::-webkit-scrollbar {
     display: none;
 }

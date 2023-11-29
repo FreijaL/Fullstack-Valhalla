@@ -7,19 +7,7 @@ import { useEffect } from 'react';
 import style from './CheckIngredients.module.scss';
 
 function CheckIngredients({name, price, id}) {
-    // const [ingredients, setIngredients] = useState([]);
-    // const dispatch = useDispatch();
-
-    // const [ingredients, setIngredients] = useState([]);
-
-    // const state = useSelector((state) => {
-    //     return state;
-    // });
-
-    // useEffect(() => {
-    //     setIngredients(state.ingredients);
-    //     // setCandiesFromStore(state.candies);
-    // }, [state]);
+    
     
     function addIngredientToCart() { 
         dispatch(buyIngredient(ingredients))

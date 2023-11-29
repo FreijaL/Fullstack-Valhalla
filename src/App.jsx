@@ -23,7 +23,10 @@ function App() {
 
   const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([]);
+  const [products, setProducts] = useState([]);
 
+
+  // Hämta ingredienser
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('./data.json');
@@ -32,14 +35,35 @@ function App() {
     };
     //console.log(ingredients);
     fetchData()
-},[] );
+  },[] );
+
+useEffect(() => {
+  if (ingredients.length > 0) {
+    //console.log(ingredients);
+    dispatch(fillStock(ingredients));
+  }
+}, [ingredients]);
+
+
+  // Hämta produkter
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/menu');
+      const products = await response.json();
+      setProducts(products);
+    }
+    console.log(products);
+    fetchProducts()
+  }, []);
 
   useEffect(() => {
-    if (ingredients.length > 0) {
-      console.log(ingredients);
-      dispatch(fillStock(ingredients));
+    if(products.length > 0) {
+      dispatch(fillStock(products));
     }
-  }, [ingredients]);
+    console.log(products);
+  }, [products]);
+
+
 
   return (
     <BrowserRouter>
