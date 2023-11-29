@@ -1,16 +1,7 @@
+// Order.module.scss
+
 @use '../variables' as *;
 
-/* .orderCard {
-    background-color: white;
-}
-
-.orderCardCompleted {
-    background-color: $primaryYellow;
-
-} */
-
-// Order.module.scss
-$font-stack: 'Helvetica', 'Arial', sans-serif;
 $font-color: #333;
 $bg-color: #f6f6f6;
 $primary-color: #eb5757;
@@ -19,56 +10,97 @@ $highlight-color: #27ae60;
 $border-color: #e0e0e0;
 
 .orderCard {
-    font-family: $font-stack;
+    font-family: $breadFont;
     color: $font-color;
     background-color: $bg-color;
-    border: 1px solid $border-color;
-    border-radius: 4px;
+    border-radius: 5px;
     margin-bottom: 1rem;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.154);
 
     &Header {
-        background-color: $primary-color;
-        color: white;
+        color: black;
         padding: 0.5rem;
-        font-size: 0.75rem;
+        font-size: 1rem;
         display: flex;
+        font-weight: 500;
         justify-content: space-between;
+        font-family: $titleFont;
     }
 
     &Details {
         padding: 0.75rem;
 
         p {
-            margin: 0.25rem 0;
             line-height: 1.5;
-            font-size: 0.9rem;
-            color: $secondary-color;
+            color: black;
         }
     }
 
     &Completed {
-        background-color: lighten($highlight-color, 30%);
+        background-color: $primaryRed;
         border-color: $highlight-color;
-
-        &Header {
-            background-color: $highlight-color;
-        }
     }
 
-    button {
-        width: 100%;
+    .orderButton {
+        width: 3rem;
         padding: 0.5rem 0;
-        background-color: $highlight-color;
+        background-color: $primaryGreen;
         border: none;
+        border-radius: 8px 0 0 0;
         color: white;
-        font-weight: bold;
         font-size: 1rem;
+        font-family: $titleFont;
         cursor: pointer;
         transition: background-color 0.3s;
-
-        &:hover {
-            background-color: darken($highlight-color, 10%);
-        }
+        place-self: flex-end;
     }
+}
+
+.timeRed {
+    background-color: $primaryRed;
+}
+
+.timeYellow {
+    background-color: $primaryYellow
+}
+
+.startButton {
+    background-color: $primaryOrange;
+    width: 5rem;
+    padding: 0.5rem 0;
+    border: none;
+    border-radius: 8px 0 0 0;
+    color: white;
+    font-size: 1rem;
+    font-family: $titleFont;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    place-self: flex-end;
+}
+
+.itemTitle {
+    font-family: $titleFont;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.itemComment {
+    font-family: $breadFont;
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.commentTitle {
+    font-family: $titleFont;
+    font-size: 20px;
+}
+
+.commentBread {
+    font-family: $breadFont;
+    font-size: 12px;
 }
