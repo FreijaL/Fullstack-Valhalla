@@ -1,8 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fillStock } from './actions/ingredientsAction';
+import { useDispatch } from 'react-redux';
 
 import SplashPage from './pages/SplashPage';
 import MenuPage from './pages/MenuPage';
@@ -19,51 +17,24 @@ import LandingPageStaff from './pages/staff/LandingPageStaff';
 import KitchenPage from './pages/staff/KitchenPage';
 import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchFailure, fetchStart, fetchSuccess } from './app/productSlice';
 
 function App() {
 
-  const dispatch = useDispatch();
-  const [ingredients, setIngredients] = useState([]);
-  //const [products, setProducts] = useState([]);
-
-
-  // Hämta ingredienser
-//   useEffect(() => {
-//     async function fetchData() {
-//       const response = await fetch('./data.json');
-//       const ingredients = await response.json();
-//       setIngredients(ingredients);
-//     };
-//     //console.log(ingredients);
-//     fetchData()
-//   },[] );
-
-// useEffect(() => {
-//   if (ingredients.length > 0) {
-//    // console.log(ingredients);
-//     dispatch(fillStock(ingredients));
-//     //console.log(ingredients);
-
-//   }
-// }, [ingredients]);
-
-  //Hämta produkter
-  useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/menu');
-      const products = await response.json();
-      //setProducts(products);
-      console.log('FÖRE', products);
-      dispatch(fillStock(products))
-      console.log('EFTER', products);
+  //Fel ställe? Dubbelkolla med alize
+  export const fetchProducts = createAsyncThunk(
+    'product/fetchProducts',
+    async (_, {dispatch}) => {
+      try {
+        dispatch(fetchStart())
+        const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/menu');
+        dispatch(fetchSuccess(response.json))
+      } catch (error) {
+        dispatch(fetchFailure(error.toString()))
+      }
     }
-    //console.log(products);
-    fetchProducts()
-  }, []);
-
-  const products = useSelector((state) => state.productSlice.products);
-
-
+  );
 
   return (
     <BrowserRouter>
