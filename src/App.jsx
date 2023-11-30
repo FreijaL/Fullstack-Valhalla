@@ -15,6 +15,7 @@ import ConfirmationPage from './pages/users/ConfirmationPage';
 import SignUpPage from './pages/users/SignUpPage';
 import AboutUsPage from './pages/users/AboutUsPage';
 
+import LandingPageStaff from './pages/staff/LandingPageStaff';
 import KitchenPage from './pages/staff/KitchenPage';
 import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
@@ -79,6 +80,7 @@ useEffect(() => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
 
+        <Route path='/start' element={<LandingPageStaff />} />
         <Route path="/kitchen" element={<KitchenPage />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/guide" element={<GuidePage />} />
