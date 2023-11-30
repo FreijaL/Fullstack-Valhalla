@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fillStock } from './actions/ingredientsAction';
 
 import SplashPage from './pages/SplashPage';
@@ -24,45 +24,44 @@ function App() {
 
   const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([]);
-  const [products, setProducts] = useState([]);
+  //const [products, setProducts] = useState([]);
 
 
   // Hämta ingredienser
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('./data.json');
-      const ingredients = await response.json();
-      setIngredients(ingredients);
-    };
-    //console.log(ingredients);
-    fetchData()
-  },[] );
+//   useEffect(() => {
+//     async function fetchData() {
+//       const response = await fetch('./data.json');
+//       const ingredients = await response.json();
+//       setIngredients(ingredients);
+//     };
+//     //console.log(ingredients);
+//     fetchData()
+//   },[] );
 
-useEffect(() => {
-  if (ingredients.length > 0) {
-    //console.log(ingredients);
-    dispatch(fillStock(ingredients));
-  }
-}, [ingredients]);
+// useEffect(() => {
+//   if (ingredients.length > 0) {
+//    // console.log(ingredients);
+//     dispatch(fillStock(ingredients));
+//     //console.log(ingredients);
 
+//   }
+// }, [ingredients]);
 
-  // Hämta produkter
+  //Hämta produkter
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/menu');
       const products = await response.json();
-      setProducts(products);
+      //setProducts(products);
+      console.log('FÖRE', products);
+      dispatch(fillStock(products))
+      console.log('EFTER', products);
     }
-    console.log(products);
+    //console.log(products);
     fetchProducts()
   }, []);
 
-  useEffect(() => {
-    if(products.length > 0) {
-      dispatch(fillStock(products));
-    }
-    console.log(products);
-  }, [products]);
+  const products = useSelector((state) => state.productSlice.products);
 
 
 
@@ -73,7 +72,6 @@ useEffect(() => {
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/productinfo" element={<ProductInfoPage />} />
         <Route path="/login" element={<LoginPage />} />
-
         <Route path="/cart" element={<CartPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />

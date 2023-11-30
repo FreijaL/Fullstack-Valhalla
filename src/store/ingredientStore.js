@@ -1,4 +1,4 @@
-export const ingredientStore = {
-    ingredients: [],
-    cart: []
-};
+// export const ingredientStore = {
+//     ingredients: [],
+//     cart: []
+// };

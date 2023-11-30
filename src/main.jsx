@@ -3,19 +3,22 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-import { legacy_createStore as createStore } from 'redux';
-import ingredientReducer from '../src/reducers/ingredientReducer.js';
-//import productReducer from './src/reducers/productReducer.js';
+import { configureStore } from '@reduxjs/toolkit'
+import productSlice from './reducers/productSlice.js'
 import { Provider } from 'react-redux';
-//import { productStore } from '../src/store/productStore.js'
 
-const store = createStore(ingredientReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = configureStore({
+  reducer: {
+    productSlice: productSlice,
+  },
+});
+
+console.log(store.getState());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </React.StrictMode>,
+  </Provider>
 )

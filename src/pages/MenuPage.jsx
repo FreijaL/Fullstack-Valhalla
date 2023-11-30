@@ -14,10 +14,10 @@ function MenuPage() {
     const [openInfo, setOpenInfo] = useState(false);
     // const [products, setProducts] = useState([]);
 
-    const state = useSelector((state) => state.products);
+    const products = useSelector((state) => state.productSlice.products);
     const dispatch = useDispatch();
 
-    console.log(state)
+    console.log(products)
 
     return (
         <section className={style.menuPageContainer}>
@@ -25,8 +25,8 @@ function MenuPage() {
             <CategoryScrollBar />
             <main className={style.menuPageMain}>
                 {
-                    state &&
-                    product.map((product) =>
+                    products &&
+                    products.map((product) =>
                     <ProductCard 
                         //onClick={() => setOpenInfo(prevstate => !prevstate)}
                         name={product.itemName}
