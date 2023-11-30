@@ -1,0 +1,41 @@
+@use '../variables' as *;
+
+.checkIngredientsForm {
+    width: 20rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.checkIngredientsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.checkIngredientsContainer input[type='radio']:before {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #F9A66C;
+}
+
+// .checkIngredientsContainer input[type='radio']:checked:after {
+//     width: 20px;
+//     height: 20px;
+//     background-color: #F9A66C;
+// }
+
+// .checkIngredientsContainer input[type='radio']:before {
+//     display: inline-block;
+//     color: $primaryOrange;
+// }
+
+.checkIngredientsLabel {
+    margin-left: .5rem;
+}
+
+.checkIngredientsPrice {
+    font-weight: 600;
+}

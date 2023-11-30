@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.buttonSmall {
+    width: 60%;
+    height: 2.5rem;
+    border: none;
+    border-radius: $primaryBorderRadius;
+    background-color: $primaryGreen;
+    color: $primaryWhite;
+    font-size: 18px;
+    box-shadow: $defaultShadow;
+}

@@ -1,2 +1,19 @@
 @use '../variables.scss' as *;
 
+.menuPageContainer {
+    @include device-size;
+    overflow: hidden;
+}
+
+.menuPageMain {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: $primaryWhite;
+    @include flex-column;
+    gap: 1rem;
+    justify-content: start;
+}
+
+.orangeButton {
+    background-color: $primaryOrange;
+}

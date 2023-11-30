@@ -1,2 +1,21 @@
 @use '../../variables.scss' as *;
 
+body {
+    background-color: $primaryCream;
+}
+
+h1 {
+    font-family: $titleFont;
+    text-align: center;
+}
+
+.kitchenContainer {
+    background-color: $primaryCream;
+    border-radius: 0px;
+    width: 80%;
+}
+
+.kitchenCounter {
+    text-align: center;
+    font-family: $breadFont;
+}

@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.formContainer {
+    width: 60%;
+    @include flex-column;
+    align-items: start;
+    font-size: 14px;
+}
+
+.formInput {
+    width: 100%;
+    height: 2.5rem;
+    border-radius: $primaryBorderRadius;
+    border: 1px solid black;
+}

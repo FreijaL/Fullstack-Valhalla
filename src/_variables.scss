@@ -8,7 +8,7 @@ $primaryWhite: #F9FAF4;
 $primaryCream: #FDF3E5;
 
 $primaryBorderRadius: 10px;
-$defaultShadow: 4px 4px 10px 0px rgba(26, 26, 26, 0.5);
+$defaultShadow: 0px 2px 4px 0px rgba(26, 26, 26, 0.5);
 
 $titleFont: "Rokkitt";
 $breadFont: "Roboto";
@@ -22,6 +22,7 @@ $thinFont: 200;
     background-color: $primaryCream;
     border-radius: 32px;
     font-family: $breadFont;
+    overflow: hidden;
 }
 
 @mixin flex-column {
