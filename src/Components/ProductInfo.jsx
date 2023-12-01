@@ -1,11 +1,28 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import style from './ProductInfo.module.scss';
 import CheckIngredients from '../Components/CheckIngredients';
 import ButtonSmall from '../Components/ButtonSmall';
 
+
 function ProductInfo() {
+    const [ingredients, setIngredients] = useState([]);
+
+    const state = useSelector((state) => {
+        return state;
+    });
+
+    useEffect(() => {
+        setIngredients(state.ingredients);
+    }, [state]);
+
+
+    
+    console.log(ingredients)
 
     return(
-        <aside className={style.productInfoContainer}>
+        <section className={style.productInfoContainer}>
             <header className={style.productInfoHeader}>
                 <h2>Pizzans namn</h2>
                 <img src="./svg/cross.svg" alt="cross" />
@@ -14,16 +31,36 @@ function ProductInfo() {
                 <section>
                     <h3>Ta bort</h3>
                     <section className={style.productInfoIngredients}>
-                        <CheckIngredients id='ost' value='ost' name='default' label='ost' />
-                        <CheckIngredients id='ost' value='ost' name='default' label='ost' />
-                        <CheckIngredients id='ost' value='ost' name='default' label='ost' />
+                        {
+                            ingredients &&
+                            ingredients.map((ingredient) => 
+                                <CheckIngredients 
+                                    key={ingredient.id} 
+                                    ingredient={ingredient}
+                                    name={ingredient.name}
+                                    id={ingredient.id}
+                                />)
+                        }
                     </section>
                 </section>
                 <section>
                     <h3>Lägg till</h3>
                     <section className={style.productInfoIngredients}>
-                        <CheckIngredients id='extra ost' value='extra ost' name='extra' label='extra ost' price='+5:-'/>
+                        {
+                            ingredients &&
+                            ingredients.map((ingredient) => 
+                                <CheckIngredients 
+                                    key={ingredient.id} 
+                                    ingredient={ingredient} 
+                                    name={ingredient.name} 
+                                    price={ingredient.price} 
+                                />)
+                        }
                     </section>
+                </section>
+                <section className={style.productInfoMoreOptions}>
+                    <p>Fler alternativ</p>
+                    <img src="./svg/arrow-down.svg" alt="arrow-pointing-down" />
                 </section>
             </main>
             <footer className={style.productInfoFooter}>
@@ -32,7 +69,7 @@ function ProductInfo() {
                     <p>Totalt: 100kr</p>
                 </section>
             </footer>
-        </aside>
+        </section>
 
     )
 };

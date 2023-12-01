@@ -1,0 +1,48 @@
+@use '../variables' as *; 
+
+.cartProductCardContainer {
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    background-color: $primaryCream;
+    border-radius: $primaryBorderRadius;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 7rem;
+    row-gap: .5rem;
+    padding: 1rem 0 0 1rem;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: $titleFont;
+    box-shadow: $defaultShadow;
+}
+
+.productExtraIngredient {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.changeValue {
+    width: 6rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.changeValue button {
+    width: 1.5rem;
+    height: 1.5rem;
+    appearance: none;
+    border: none;
+    background-color: $primaryCream;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.productPriceTotal {
+    font-size: 24px;
+    align-self: flex-end;
+    margin-bottom: .4rem;
+}
