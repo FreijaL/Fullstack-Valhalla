@@ -10,19 +10,18 @@ import { useSelector } from 'react-redux';
 
 
 function MenuPage() {
-
     const [openInfo, setOpenInfo] = useState(false);
    
-    const state = useSelector((state) => state.products);
-    console.log("state:", state);
+    const products = useSelector((state) => state.products);
+    console.log("state:", products);
 
     return (
         <section className={style.menuPageContainer}>
             <Header />
             <CategoryScrollBar />
             <main className={style.menuPageMain}>
-                {state &&
-                    state.products.map((product) => (
+                {products &&
+                    products.products.map((product) => (
                         <ProductCard
                         image={product.image}
                         name={product.itemName}

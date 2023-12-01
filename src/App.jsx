@@ -18,19 +18,16 @@ import KitchenPage from './pages/staff/KitchenPage';
 import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
 import { fillIdCounter, fillStock } from './app/productSlice';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 
 function App() {
-
   const dispatch = useDispatch();
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/menu');
       const products = await response.json();
-      setProducts(products.products);
 
       dispatch(fillStock(products.products));
       dispatch(fillIdCounter(products.products.length));
