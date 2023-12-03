@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ServiceOrder.module.scss';
 
-const ServiceOrder = ({ order }) => {
+const ServiceOrder = ({ order, onOrderClick }) => {
   const [isCompleted, setIsCompleted] = useState(false);
-  const initialTime = order.timeRemaining; // Initial time in seconds
+  const initialTime = order.timeRemaining;
   const [elapsedTime, setElapsedTime] = useState(initialTime);
+  const [isOrderVisible, setIsOrderVisible] = useState(true);
 
+  //Timer
   useEffect(() => {
     const interval = setInterval(() => {
       setElapsedTime(prevTime => prevTime + 1);
@@ -14,32 +16,38 @@ const ServiceOrder = ({ order }) => {
     return () => clearInterval(interval);
   }, []);
 
+  //Ändra färg baserat på timer
   const getTimeColor = () => {
-    if (elapsedTime >= 1800) { 
-      return styles.timeRed;
-    } else if (elapsedTime >= 900) { 
-      return styles.timeYellow;
+    if (!isCompleted) { // Check if the order is not completed
+      if (elapsedTime >= 1800) { 
+        return styles.timeRed;
+      } else if (elapsedTime >= 900) { 
+        return styles.timeYellow;
+      }
     }
-    return '';
+    return ''; // Return default style if the order is completed
   };
 
+  //Servera > Klar > Ta Bort
   const markAsCompleted = () => {
-    setIsCompleted(true);
-    // Additional logic to update the server state
+    if (!isCompleted) {
+      setIsCompleted(true);
+    } else {
+      setIsOrderVisible(false); 
+    }
   };
 
+  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig, detta borde animeras för snygghet
+
+  //Ändrar utseende på knapp vid klick
   const getButtonStyle = () => {
-    if (elapsedTime < 60) { 
-      return styles.startButton;
-    }
-    return styles.orderButton;
+    return isCompleted ? styles.orderButton : styles.startButton;
   };
 
+
+  // Ändrar texten inuti knappen
   const getButtonText = () => {
-    if (elapsedTime < 60) { // First minute
-      return "Påbörja";
-    }
-    return "KLAR";
+    return isCompleted ? "KLAR" : "Servera";
   };
 
   // Format the elapsed time as MM:SS
@@ -53,19 +61,42 @@ const ServiceOrder = ({ order }) => {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
+    // Tar emot addons eller removals, MÅSTE TA EMOT EN ARRAY OBS
+    const formatItem = (item) => {
+      return (
+        <>
+          <div className={styles.itemTitle}>
+            {item.name} x {item.quantity}
+          </div>
+          {item.extras && (
+            <div className={styles.itemComment}>
+              + {item.extras.join(' + ')}
+            </div>
+          )}
+          {item.removals && (
+            <div className={styles.itemComment}>
+              - {item.removals.join(' - ')}
+            </div>
+          )}
+        </>
+      );
+    };
   return (
     <div className={styles.orderCardContainer}>
-      <div className={`${styles.orderCard} ${isCompleted ? styles.orderCardCompleted : ''} ${getTimeColor()}`}>
+      <div className={`${styles.orderCard} ${isCompleted ? styles.orderCardCompleted : ''} ${getTimeColor()}`} onClick={() => onOrderClick(order)}>
         <div className={styles.orderCardHeader}>
           <span>{order.id}</span>
           <span>{formatTime()}</span>
         </div>
+        <div className={styles.orderCardPhone}>
+          <span>Telefon: {order.phoneNr}</span>
+        </div>
         <div className={styles.orderCardDetails}>
           <div className={styles.orderItems}>
-            {order.pizzas.map((pizza) => (
-              <div className={styles.itemContainer}  key={pizza.id}>
-                <p className={styles.itemTitle}>{pizza.name}</p>
-                <p className={styles.itemComment}>{pizza.comment}</p>
+            {order.items.map((item) => (
+              <div className={styles.itemContainer}  key={item.id}>
+                {formatItem(item)}
+                <p className={styles.itemComment}>{item.comment}</p>
               </div>
           ))}
           </div>

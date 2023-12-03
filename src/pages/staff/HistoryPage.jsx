@@ -1,41 +1,40 @@
-import style from './ServicePage.module.scss';
-import React, { useState } from 'react';
-import ServiceOrderList from '../../Components/ServiceOrderList';
-import ServiceOrderModal from '../../Components/ServiceOrderModal';
+//KitchenPage.jsx
+
+import style from './HistoryPage.module.scss';
+import React from 'react';
+import OrderList from '../../Components/KitchenOrderList';
 import Header from '../../Components/Header';
 
-function ServicePage() {
-    const startTime = 0;
+function HistoryPage() {
+  const startTime = 0;
 
-    //For testing purposes
-    const startTime1 = 29 * 60 + 55;
-    const startTime2 = 14 * 60 + 54;
-    const startTime3 = 10 * 60;
-    const startTime4 = 5 * 60;
-    const startTime5 = 4 * 60 + 45;
-    const startTime6 = 52;
-  
-  
-    // State management behövs
-   //Fixar statisk lista sålänge
-   const orders = [
+  //For testing purposes
+  const startTime1 = 29 * 60 + 55;
+  const startTime2 = 14 * 60 + 54;
+  const startTime3 = 10 * 60;
+  const startTime4 = 5 * 60;
+  const startTime5 = 4 * 60 + 45;
+  const startTime6 = 52;
+
+
+  // BEHÖVER LÖSA STATE MANAGEMENT MED REDUX 
+
+ //Fixar statisk lista sålänge
+  const orders = [
     {
       id: '#58233',
-      phoneNr: '070-123 45 67',
       timeRemaining: startTime1,
-      items: [
+      pizzas: [
         { id: 'p1', name: 'Vesuvio', category: 'pizza', quantity: 1},
         { id: 'p2', name: 'Margherita', extras: ['Extra Ost'], category: 'pizza', quantity: 1},
-        { id: 'p3', name: 'Pepsi Max', category: 'Drink', quantity: 2}
       ],
       isCompleted: false,
       comment: 'Lägg den extra osten bredvid tack!'
     },
     {
       id: '#58234',
-      phoneNr: '070-123 45 67',
       timeRemaining: startTime2,
-      items: [
+      pizzas: [
         { id: 'p4', name: 'Vesuvio', removals: ['Ingen skinka'], category: 'pizza', quantity: 1 },
         { id: 'p5', name: 'Hawaii', category: 'pizza', quantity: 2 },
       ],
@@ -44,9 +43,8 @@ function ServicePage() {
     },
     {
       id: '#58235',
-      phoneNr: '070-123 45 67',
       timeRemaining: startTime3,
-      items: [
+      pizzas: [
         { id: 'p7', name: 'Capricciosa', category: 'pizza', quantity: 2 },
         { id: 'p8', name: 'Kebabpizza', category: 'pizza', quantity: 1 },
       ],
@@ -55,9 +53,8 @@ function ServicePage() {
     },
     {
       id: '#58236',
-      phoneNr: '070-123 45 67',
       timeRemaining: startTime4,
-      items: [
+      pizzas: [
         { id: 'p9', name: 'Quattro Stagioni', category: 'pizza', quantity: 1  },
         { id: 'p10', name: 'Calzone', category: 'pizza', quantity: 1  },
       ],
@@ -66,9 +63,8 @@ function ServicePage() {
     },
     {
       id: '#58237',
-      phoneNr: '070-123 45 67',
       timeRemaining: startTime5,
-      items: [
+      pizzas: [
         { id: 'p11', name: 'Funghi', category: 'pizza', quantity: 3 },
       ],
       isCompleted: false,
@@ -76,9 +72,8 @@ function ServicePage() {
     },
     {
       id: '#58238',
-      phoneNr: '070-123 45 67',
       timeRemaining: startTime6,
-      items: [
+      pizzas: [
         { id: 'p12', name: 'Pepperoni', category: 'pizza', quantity: 2 },
         { id: 'p13', name: 'Marinara', category: 'pizza', quantity: 1 },
         { id: 'p14', name: 'Vesuvio', category: 'pizza', quantity: 1 },
@@ -88,29 +83,26 @@ function ServicePage() {
     }
   ];
 
+  const calculateTotalPizzas = (orders) => {
+    return orders.reduce((total, order) => {
+      const pizzasInOrder = order.pizzas || [];
+      const totalPizzasInOrder = pizzasInOrder.reduce((orderTotal, pizza) => orderTotal + pizza.quantity, 0);
+      return total + totalPizzasInOrder;
+    }, 0);
+  };
+
+  const totalNumberOfPizzas = calculateTotalPizzas(orders);
   const totalNumberOfOrders = orders.length;
 
-  //Modal för extra orderinfo
-  const [selectedOrder, setSelectedOrder] = useState(null);
 
-  const handleOrderClick = (order) => {
-    setSelectedOrder(order);
-  };
 
-  const handleCloseModal = () => {
-    setSelectedOrder(null);
-  };
-  
-    return (
-      <div className={style.serviceContainer}>
-        <Header />
-        <h2 className={style.serviceCounter}>Pågående ordrar: {totalNumberOfOrders}</h2>
-        <ServiceOrderList orders={orders} onOrderClick={handleOrderClick}/>
-        {selectedOrder && (
-        <ServiceOrderModal order={selectedOrder} onClose={handleCloseModal} />
-      )}
-      </div>
-    );
+  return (
+    <div className={style.historyContainer}>
+      <Header />
+      <h2 className={style.historySearch}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfPizzas}</h2>
+      <OrderList orders={orders} />
+    </div>
+  );
 };
 
-export default ServicePage;
+export default HistoryPage;

@@ -1,0 +1,23 @@
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; // Make sure this is higher than other z-index values to be on top
+}
+
+.modalContent {
+    background-color: #fff;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px; // Set a max-width for larger screens
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1001; // Above the backdrop
+}
