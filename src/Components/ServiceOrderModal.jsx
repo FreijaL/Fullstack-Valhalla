@@ -1,13 +1,10 @@
 import React from 'react';
-import styles from './ServiceOrderModal.module.scss'; // You'll need to create this SCSS module
+import styles from './ServiceOrderModal.module.scss';
 
 const ServiceOrderModal = ({ order, onClose }) => {
   if (!order) {
     return null;
   }
-
-  // Format the order details into JSX
-  // ...
 
   return (
     <div className={styles.modalBackground}>
@@ -17,7 +14,6 @@ const ServiceOrderModal = ({ order, onClose }) => {
         <h3>Orderinformation</h3>
         {/* Format and display the order information */}
         <p>Totalt: 300kr</p> {/* Implement calculateTotalPrice */}
-        {/* ... */}
       </div>
     </div>
   );
