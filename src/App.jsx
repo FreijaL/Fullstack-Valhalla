@@ -17,6 +17,7 @@ import LandingPageStaff from './pages/staff/LandingPageStaff';
 import KitchenPage from './pages/staff/KitchenPage';
 import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
+import HistoryPage from './pages/staff/HistoryPage'
 import { fillIdCounter, fillStock } from './app/productSlice';
 import { useEffect } from 'react';
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/kitchen" element={<KitchenPage />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/guide" element={<GuidePage />} />
+        <Route path="/history" element={<HistoryPage />} />
       </Routes>
     </BrowserRouter>
   )

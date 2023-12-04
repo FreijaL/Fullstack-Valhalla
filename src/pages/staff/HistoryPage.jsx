@@ -1,11 +1,11 @@
 //KitchenPage.jsx
 
-import style from './KitchenPage.module.scss';
+import style from './HistoryPage.module.scss';
 import React from 'react';
-import KitchenOrderList from '../../Components/KitchenOrderList';
+import OrderList from '../../Components/KitchenOrderList';
 import Header from '../../Components/Header';
 
-function KitchenPage() {
+function HistoryPage() {
   const startTime = 0;
 
   //For testing purposes
@@ -24,7 +24,7 @@ function KitchenPage() {
     {
       id: '#58233',
       timeRemaining: startTime1,
-      items: [
+      pizzas: [
         { id: 'p1', name: 'Vesuvio', category: 'pizza', quantity: 1},
         { id: 'p2', name: 'Margherita', extras: ['Extra Ost'], category: 'pizza', quantity: 1},
       ],
@@ -34,7 +34,7 @@ function KitchenPage() {
     {
       id: '#58234',
       timeRemaining: startTime2,
-      items: [
+      pizzas: [
         { id: 'p4', name: 'Vesuvio', removals: ['Ingen skinka'], category: 'pizza', quantity: 1 },
         { id: 'p5', name: 'Hawaii', category: 'pizza', quantity: 2 },
       ],
@@ -44,7 +44,7 @@ function KitchenPage() {
     {
       id: '#58235',
       timeRemaining: startTime3,
-      items: [
+      pizzas: [
         { id: 'p7', name: 'Capricciosa', category: 'pizza', quantity: 2 },
         { id: 'p8', name: 'Kebabpizza', category: 'pizza', quantity: 1 },
       ],
@@ -54,7 +54,7 @@ function KitchenPage() {
     {
       id: '#58236',
       timeRemaining: startTime4,
-      items: [
+      pizzas: [
         { id: 'p9', name: 'Quattro Stagioni', category: 'pizza', quantity: 1  },
         { id: 'p10', name: 'Calzone', category: 'pizza', quantity: 1  },
       ],
@@ -64,7 +64,7 @@ function KitchenPage() {
     {
       id: '#58237',
       timeRemaining: startTime5,
-      items: [
+      pizzas: [
         { id: 'p11', name: 'Funghi', category: 'pizza', quantity: 3 },
       ],
       isCompleted: false,
@@ -73,7 +73,7 @@ function KitchenPage() {
     {
       id: '#58238',
       timeRemaining: startTime6,
-      items: [
+      pizzas: [
         { id: 'p12', name: 'Pepperoni', category: 'pizza', quantity: 2 },
         { id: 'p13', name: 'Marinara', category: 'pizza', quantity: 1 },
         { id: 'p14', name: 'Vesuvio', category: 'pizza', quantity: 1 },
@@ -83,26 +83,26 @@ function KitchenPage() {
     }
   ];
 
-  const calculateTotalitems = (orders) => {
+  const calculateTotalPizzas = (orders) => {
     return orders.reduce((total, order) => {
-      const itemsInOrder = order.items || [];
-      const totalitemsInOrder = itemsInOrder.reduce((orderTotal, pizza) => orderTotal + pizza.quantity, 0);
-      return total + totalitemsInOrder;
+      const pizzasInOrder = order.pizzas || [];
+      const totalPizzasInOrder = pizzasInOrder.reduce((orderTotal, pizza) => orderTotal + pizza.quantity, 0);
+      return total + totalPizzasInOrder;
     }, 0);
   };
 
-  const totalNumberOfitems = calculateTotalitems(orders);
+  const totalNumberOfPizzas = calculateTotalPizzas(orders);
   const totalNumberOfOrders = orders.length;
 
 
 
   return (
-    <div className={style.kitchenContainer}>
+    <div className={style.historyContainer}>
       <Header />
-      <h2 className={style.kitchenCounter}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfitems}</h2>
-      <KitchenOrderList orders={orders} />
+      <h2 className={style.historySearch}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfPizzas}</h2>
+      <OrderList orders={orders} />
     </div>
   );
 };
 
-export default KitchenPage;
+export default HistoryPage;

@@ -1,7 +1,7 @@
 // OrderList.js
 import React from 'react';
-import Order from './Order';
-import style from './OrderList.module.scss'
+import Order from './KitchenOrder';
+import style from './KitchenOrderList.module.scss'
 
 //Hela orderlistan som mappas in
 const OrderList = ({ orders }) => {

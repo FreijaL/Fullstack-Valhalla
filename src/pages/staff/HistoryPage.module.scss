@@ -1,4 +1,4 @@
-/* KitchenPage.module.scss */
+/* HistoryPage.module.scss */
 
 @use '../../variables.scss' as *;
 
@@ -11,13 +11,13 @@ h1 {
     text-align: center;
 }
 
-.kitchenContainer {
+.historyContainer {
     background-color: $primaryCream;
     border-radius: 0px;
     width: 80%;
 }
 
-.kitchenCounter {
+.historySearch {
     text-align: center;
     font-family: $breadFont;
 }
