@@ -1,5 +1,75 @@
 @use '../../variables.scss' as *;
 
 .cartPageContainer {
-    @include device-size;
+    width: 100vw;
+    background-color: $primaryWhite;
+    @include flex-column;
+    justify-content: start;
+}
+
+.cartPageMainContainer {
+    margin: 6.9rem 0 2rem 0;
+    padding: 1rem;
+    @include flex-column;
+    gap: 2rem;
+}
+
+.cartPageDeliveryContainer {
+    width: 100%;
+}
+
+.cartPageProductContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cartPageSummary {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.cartPageSummaryInfo {
+    display: flex;
+    flex-direction: column;
+    font-family: $titleFont;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.inputInfoToKitchen {
+    width: 100%;
+    height: 5rem;
+    border-radius: $primaryBorderRadius;
+    border: 1px solid black;
+    padding: 1rem;
+    outline: none;
+}
+
+.cartPageSummaryPrice {
+    width: 100%;
+    height: auto;
+    background-color: $primaryCream;
+    border-radius: $primaryBorderRadius;
+    box-shadow: $defaultShadow;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    font-family: $titleFont;
+    margin: 2rem 0;
+}
+
+.summaryPrice {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summaryTotalPrice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
 }

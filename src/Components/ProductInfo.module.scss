@@ -1,7 +1,7 @@
 @use '../variables' as *;
 
 .productInfoContainer {
-    width: auto;
+    width: 450px;
     height: 80%;
     position: fixed;
     bottom: 0;
@@ -11,7 +11,7 @@
 .productInfoHeader {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 2rem 2rem 1rem 2rem;
     font-family: $titleFont;
 }
 
@@ -36,13 +36,14 @@
 }
 
 .productInfoFooter {
+    width: 450px;
     height: 5rem;
     position: fixed;
     bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     padding: 2rem 0;
 }
@@ -52,4 +53,15 @@
     font-family: $titleFont;
     font-size: 20px;
     font-weight: 500;
+}
+
+.productInfoMoreOptions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -20px;
+    font-family: $titleFont;
+    font-size: 18px;
 }

@@ -1,2 +1,54 @@
 @use '../../variables.scss' as *;
 
+.paymentPageContainer {
+    width: 100vw;
+    background-color: $primaryCream;
+    padding: 1rem;
+}
+
+.paymentPageMain {
+    margin-top: 10rem;
+    @include flex-column;
+    gap: 2rem;
+}
+
+.paymentPageMain p {
+    font-family: $titleFont;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+
+.paymentPageOptionContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: $primaryWhite;
+    border-radius: $primaryBorderRadius;
+    box-shadow: $defaultShadow;
+    padding: 1rem;
+}
+
+.paymentPageOption {
+    display: flex;
+    gap: 1rem;
+}
+
+.paymentPageForm {
+    width: 100%;
+    font-family: $breadFont;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.paymentPageForm p {
+    text-align: center;
+    font-size: 28px;
+}
+
+.paymentPageFormSection {
+    display: flex;
+    gap: 1rem;
+}
