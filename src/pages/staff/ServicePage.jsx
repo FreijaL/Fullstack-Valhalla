@@ -29,6 +29,9 @@ function ServicePage() {
         { id: 'p3', name: 'Pepsi Max', category: 'Drink', quantity: 2}
       ],
       isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
       comment: 'Lägg den extra osten bredvid tack!'
     },
     {
@@ -40,6 +43,9 @@ function ServicePage() {
         { id: 'p5', name: 'Hawaii', category: 'pizza', quantity: 2 },
       ],
       isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
       comment: 'Mindre lök än vanligt, tack.'
     },
     {
@@ -51,6 +57,9 @@ function ServicePage() {
         { id: 'p8', name: 'Kebabpizza', category: 'pizza', quantity: 1 },
       ],
       isCompleted: true,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
       comment: ''
     },
     {
@@ -62,6 +71,9 @@ function ServicePage() {
         { id: 'p10', name: 'Calzone', category: 'pizza', quantity: 1  },
       ],
       isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
       comment: 'Extra napkins please.'
     },
     {
@@ -72,6 +84,9 @@ function ServicePage() {
         { id: 'p11', name: 'Funghi', category: 'pizza', quantity: 3 },
       ],
       isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
       comment: 'Ring the doorbell loudly, please.'
     },
     {
@@ -84,6 +99,9 @@ function ServicePage() {
         { id: 'p14', name: 'Vesuvio', category: 'pizza', quantity: 1 },
       ],
       isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
       comment: 'Leave at the doorstep if no answer.'
     }
   ];

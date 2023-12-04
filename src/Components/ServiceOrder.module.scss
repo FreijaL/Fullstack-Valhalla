@@ -80,6 +80,7 @@ $border-color: #e0e0e0;
     cursor: pointer;
     transition: background-color 0.3s;
     place-self: flex-end;
+    z-index: 5;
 }
 
 .itemTitle {

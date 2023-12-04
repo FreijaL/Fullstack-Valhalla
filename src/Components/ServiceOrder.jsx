@@ -7,6 +7,12 @@ const ServiceOrder = ({ order, onOrderClick }) => {
   const [elapsedTime, setElapsedTime] = useState(initialTime);
   const [isOrderVisible, setIsOrderVisible] = useState(true);
 
+  const handleButtonClick = (event) => {
+    event.stopPropagation(); // Prevent click event from bubbling up
+    setIsCompleted(prevState => !prevState); // Toggle the completed state
+    markAsCompleted();
+  };
+
   //Timer
   useEffect(() => {
     const interval = setInterval(() => {
@@ -103,7 +109,7 @@ const ServiceOrder = ({ order, onOrderClick }) => {
           <p className={styles.commentTitle}>Kommentar från kund:</p>
           <p className={styles.commentBread}>{order.comment}</p>
         </div>
-        <button className={getButtonStyle()} onClick={markAsCompleted}>{getButtonText()}</button>
+        <button className={getButtonStyle()} onClick={handleButtonClick}>{getButtonText()}</button>
       </div>
     </div>
   );
