@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import style from './MenuPage.module.scss';
-import NavMenu from '../Components/NavMenu';
 import Header from '../Components/Header';
 import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
@@ -10,9 +9,7 @@ import { useSelector } from 'react-redux';
 function MenuPage() {
     
     const products = useSelector((state) => state.products);
-    console.log("state:", products);
-
-    const [openInfo, setOpenInfo] = useState(false);
+    // console.log("state:", products);
 
     function sortProducts(products) {
         let sortedProducts = {
@@ -49,12 +46,25 @@ function MenuPage() {
     }
 
     const sortedProducts = sortProducts(products);
-    console.log(sortProducts(products));
 
     const [activeCategory, setActiveCategory] = useState('pizzas');
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
+    }
+
+    const [openInfo, setOpenInfo] = useState(false);
+    const [pizzaInfo, setPizzaInfo] = useState();
+
+    const openProductInfo = (product) => {
+        if (product.category === "Pizza" || product.category === "Kebab") {
+            setOpenInfo(true);
+            setPizzaInfo(product);
+        }
+    }
+
+    const handleCloseModal = () => {
+        setOpenInfo(false);
     }
 
     return (
@@ -71,17 +81,17 @@ function MenuPage() {
                         toppings={product.toppings}
                         price={product.price}
                         key={product.id}
+                        onClick={() => openProductInfo(product)}
                         />
                     ))
-                }    
+                }
             </main>
-            {
-                openInfo
-                ?
-                <ProductInfo />
-                :
-                ''
-            }
+            { openInfo ? (
+                <ProductInfo
+                closeModal={handleCloseModal}
+                product={pizzaInfo}
+                />
+            ): null}
         </section>
     )
 };
