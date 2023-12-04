@@ -7,21 +7,62 @@ import ProductCard from '../Components/ProductCard';
 import ProductInfo from '../Components/ProductInfo';
 import { useSelector } from 'react-redux';
 
-
-
 function MenuPage() {
-    const [openInfo, setOpenInfo] = useState(false);
-   
+    
     const products = useSelector((state) => state.products);
     console.log("state:", products);
+
+    const [openInfo, setOpenInfo] = useState(false);
+
+    function sortProducts(products) {
+        let sortedProducts = {
+            pizzas: [],
+            kebabs: [],
+            sides: [],
+            drinks: [],
+            desserts: []
+        };
+
+        products.products.map((product) => {
+            switch(product.category) {
+                case "Pizza": 
+                    sortedProducts.pizzas.push(product)
+                    break;
+                case "Kebab":
+                    sortedProducts.kebabs.push(product)
+                    break;
+                case "Tillbehör":
+                    sortedProducts.sides.push(product)
+                    break; 
+                case "Dryck":
+                    sortedProducts.drinks.push(product)
+                    break;
+                case "Dessert":
+                    sortedProducts.desserts.push(product)
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        return sortedProducts;
+    }
+
+    const sortedProducts = sortProducts(products);
+    console.log(sortProducts(products));
+
+    const [activeCategory, setActiveCategory] = useState('pizzas');
+
+    
 
     return (
         <section className={style.menuPageContainer}>
             <Header />
-            <CategoryScrollBar />
+            <CategoryScrollBar 
+            />
             <main className={style.menuPageMain}>
-                {products &&
-                    products.products.map((product) => (
+                {sortedProducts &&
+                    sortedProducts[activeCategory].map((product) => (
                         <ProductCard
                         image={product.image}
                         name={product.itemName}
@@ -30,9 +71,7 @@ function MenuPage() {
                         key={product.id}
                         />
                     ))
-                }
-                {/* <ProductCard onClick={() => setOpenInfo(prevstate => !prevstate)} /> */}
-                
+                }    
             </main>
             {
                 openInfo
