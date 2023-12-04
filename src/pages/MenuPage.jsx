@@ -53,12 +53,14 @@ function MenuPage() {
 
     const [activeCategory, setActiveCategory] = useState('pizzas');
 
-    
+    const handleCategoryChange = (category) => {
+        setActiveCategory(category);
+    }
 
     return (
         <section className={style.menuPageContainer}>
             <Header />
-            <CategoryScrollBar 
+            <CategoryScrollBar onCategoryChange={handleCategoryChange}
             />
             <main className={style.menuPageMain}>
                 {sortedProducts &&
