@@ -50,11 +50,11 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
 
-        <Route path='/start' element={<LandingPageStaff />} />
-        <Route path="/kitchen" element={<KitchenPage />} />
-        <Route path="/service" element={<ServicePage />} />
-        <Route path="/guide" element={<GuidePage />} />
-        <Route path="/history" element={<HistoryPage />} />
+        <Route path='/staff' element={<LandingPageStaff />} />
+        <Route path="/staff/kitchen" element={<KitchenPage />} />
+        <Route path="/staff/service" element={<ServicePage />} />
+        <Route path="/staff/guide" element={<GuidePage />} />
+        <Route path="/staff/history" element={<HistoryPage />} />
       </Routes>
     </BrowserRouter>
   )
