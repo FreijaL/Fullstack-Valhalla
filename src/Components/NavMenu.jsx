@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import style from './NavMenu.module.scss';
 import { useState } from 'react';
 
@@ -8,26 +9,31 @@ function NavMenu() {
     return (
         <>
             {
-                showMenu
-                ?
+                showMenu &&
                 <nav className={style.navMenuContainer}>
                     <img 
                         onClick={() => setShowMenu(prevstate => !prevstate)}
-                        className={style.cross} src="./svg/cross.svg" alt="cross-option" />
+                        className={style.cross} src="/svg/cross.svg" alt="cross-option" />
+                    { window.location.pathname.includes('/staff') ? 
                     <ul className={style.navList}>
-                        <li className={style.navListItem}>Meny</li>
-                        <li className={style.navListItem}>Min beställning</li>
-                        <li className={style.navListItem}>Orderhistorik</li>
-                        <li className={style.navListItem}>Mitt konto</li>
-                        <li className={style.navListItem}>Om oss</li>
-                        <li className={style.navListItem}>FAQ</li>
+                        <NavLink className={style.navListItem} to="/staff" >Hem</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/kitchen">Köket</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/service">Kassan</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/history">Orderhistorik</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/guide" >Snabbguide</NavLink>
+                    </ul> : 
+                    <ul className={style.navList}>
+                        <NavLink className={style.navListItem} to="/menu" >Meny</NavLink>
+                        <NavLink className={style.navListItem} to="/confirmation">Min beställning</NavLink>
+                        <NavLink className={style.navListItem}>Orderhistorik</NavLink>
+                        <NavLink className={style.navListItem}>Mitt konto</NavLink>
+                        <NavLink className={style.navListItem} to="/aboutus" >Om oss</NavLink>
                     </ul>
+                    } 
                     <section className={style.navListLogin}>
-                        <p>Logga in</p>
+                        <NavLink to="/login">Logga in</NavLink>
                     </section>
                 </nav>
-                :
-                ''
             }
         </>
     )
