@@ -1,11 +1,28 @@
+//CartPage.jsx
+
 import style from './CartPage.module.scss';
 import Header from '../../Components/Header';
 import ProductInfo from '../../Components/ProductInfo';
 import DeliveryOption from '../../Components/DeliveryOption';
 import CartProductCard from '../../Components/CartProductCard';
 import ButtonLarge from '../../Components/ButtonLarge';
+import { useSelector, useDispatch } from 'react-redux';
 
 function CartPage() {
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.products.products);
+    const cartItems = useSelector((state) => state.products.cartItems);
+
+    console.log(cartItems);
+
+    // const handleAddToCart = (product) => {
+    //     dispatch(addToCart(product.id)); 
+    // };
+
+    const totalPrice = cartItems.reduce((total, itemId) => {
+        const product = products.find(product => product.id === itemId);
+        return product ? total + product.price : total;
+    }, 0);
 
     return (
         <section className={style.cartPageContainer}>
@@ -15,10 +32,19 @@ function CartPage() {
                     <DeliveryOption title='Välj leverans:'/>
                 </section>
                 <section className={style.cartPageProductContainer}>
+                     {cartItems && cartItems.map((item) => (
+                        <CartProductCard />
+                     )
+                        
+
+
+                        /* const product = products.find(product => product.id === itemId);
+                        return product && <CartProductCard key={product.id} product={product} />; */
+                    )}
+                    {/* <CartProductCard />
                     <CartProductCard />
                     <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
+                    <CartProductCard /> */}
                 </section>
                 <section className={style.cartPageSummary}>
                     <aside className={style.cartPageSummaryInfo}>

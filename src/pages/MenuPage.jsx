@@ -1,3 +1,5 @@
+//MenuPage.jsx
+
 import { useState } from 'react';
 import style from './MenuPage.module.scss';
 import Header from '../Components/Header';
@@ -5,11 +7,22 @@ import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
 import ProductInfo from '../Components/ProductInfo';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../app/productSlice';
+
 
 function MenuPage() {
     
     const products = useSelector((state) => state.products);
+    const cartItems = useSelector((state) => state.cartItems);
+    const dispatch = useDispatch();
     // console.log("state:", products);
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product)); // Assuming the payload is the product id
+        
+    };
+
+    console.log(cartItems);
 
     function sortProducts(products) {
         let sortedProducts = {
@@ -82,6 +95,7 @@ function MenuPage() {
                         price={product.price}
                         key={product.id}
                         onClick={() => openProductInfo(product)}
+                        onAddToCart={() => handleAddToCart(product)}
                         />
                     ))
                 }

@@ -1,8 +1,10 @@
+//ProductCard.jsx
+
 import style from './ProductCard.module.scss';
 import MiniButton from './MiniButton';
 
 
-function ProductCard({name, price, toppings, image, onClick}) {
+function ProductCard({name, price, toppings, image, onClick, onAddToCart}) {
 
     return(
         <section className={style.productCardContainer}>
@@ -13,7 +15,7 @@ function ProductCard({name, price, toppings, image, onClick}) {
                 <h3>{price} kr</h3>
             </section>
             <section className={style.productCardButton}>
-                <MiniButton title='+ Lägg till' />
+                <MiniButton title='+ Lägg till' onClick={onAddToCart}/>
             </section>
         </section>
     )
