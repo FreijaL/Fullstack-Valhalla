@@ -13,14 +13,21 @@ import { addToCart } from '../app/productSlice';
 
 function MenuPage() {
     
+    const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
     const cartItems = useSelector((state) => state.cartItems);
-    const dispatch = useDispatch();
-    // console.log("state:", products);
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product)); // Assuming the payload is the product id
-        
+    
+    function handleAddToCart(product) {
+        dispatch(addToCart(product));
+        console.log(product);
     };
+    // console.log("state:", products);
+
+    // const handleAddToCart = (product) => {
+    //     dispatch(addToCart(product)); // Assuming the payload is the product id
+        
+    // };
+
 
     console.log(cartItems);
 

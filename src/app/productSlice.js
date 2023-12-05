@@ -19,7 +19,9 @@ const productSlice = createSlice({
             state.counter = action.payload
         },
         addToCart: (state, action) => {
-            state.cartItems.push(action.payload);
+            console.log(action);
+            state.cartItems = [...state.cartItems, action.payload];
+            console.log(state.cartItems)
         }
     },
 })

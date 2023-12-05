@@ -19,10 +19,10 @@ function CartPage() {
     //     dispatch(addToCart(product.id)); 
     // };
 
-    const totalPrice = cartItems.reduce((total, itemId) => {
-        const product = products.find(product => product.id === itemId);
-        return product ? total + product.price : total;
-    }, 0);
+    // const totalPrice = cartItems.reduce((total, itemId) => {
+    //     const product = products.find(product => product.id === itemId);
+    //     return product ? total + product.price : total;
+    // }, 0);
 
     return (
         <section className={style.cartPageContainer}>
@@ -32,21 +32,20 @@ function CartPage() {
                     <DeliveryOption title='Välj leverans:'/>
                 </section>
                 <section className={style.cartPageProductContainer}>
-                     {cartItems && cartItems.map((item) => (
-                        <CartProductCard />
-                     )
-                        
-
-
+                    {
+                        cartItems && 
+                            cartItems.map((item) => (
+                            <CartProductCard 
+                                name={item.name}
+                                price={item.price}
+                            />
+                    )
                         /* const product = products.find(product => product.id === itemId);
                         return product && <CartProductCard key={product.id} product={product} />; */
                     )}
-                    {/* <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard /> */}
                 </section>
                 <section className={style.cartPageSummary}>
+                <button onClick={() => console.log('button', cartItems)}>LOGGA HÄR</button>
                     <aside className={style.cartPageSummaryInfo}>
                         <label>Kommentar till köket:</label>
                         <textarea className={style.inputInfoToKitchen} />

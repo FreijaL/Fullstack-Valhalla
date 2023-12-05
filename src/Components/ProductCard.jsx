@@ -1,5 +1,3 @@
-//ProductCard.jsx
-
 import style from './ProductCard.module.scss';
 import MiniButton from './MiniButton';
 
