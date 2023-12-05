@@ -1,3 +1,5 @@
+//MenuPage.jsx
+
 import { useState } from 'react';
 import style from './MenuPage.module.scss';
 import Header from '../Components/Header';
@@ -5,12 +7,22 @@ import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
 import ProductInfo from '../Components/ProductInfo';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addToCart, calculatePriceTotal } from '../app/productSlice';
+
 
 function MenuPage() {
     
-    const products = useSelector((state) => state.products);
-    // console.log("state:", products);
-
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.products.products);
+    const cartItems = useSelector((state) => state.products.cartItems);
+    const cartTotal = useSelector((state) => state.products.priceTotal);
+    
+    function handleAddToCart(product) {
+        dispatch(addToCart(product));
+        dispatch(calculatePriceTotal());
+    };
+    
     function sortProducts(products) {
         let sortedProducts = {
             pizzas: [],
@@ -20,7 +32,7 @@ function MenuPage() {
             desserts: []
         };
 
-        products.products.map((product) => {
+        products.map((product) => {
             switch(product.category) {
                 case "Pizza": 
                     sortedProducts.pizzas.push(product)
@@ -82,6 +94,7 @@ function MenuPage() {
                         price={product.price}
                         key={product.id}
                         onClick={() => openProductInfo(product)}
+                        onAddToCart={() => handleAddToCart(product)}
                         />
                     ))
                 }

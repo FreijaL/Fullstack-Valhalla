@@ -1,11 +1,30 @@
+//CartPage.jsx
+
 import style from './CartPage.module.scss';
 import Header from '../../Components/Header';
 import ProductInfo from '../../Components/ProductInfo';
 import DeliveryOption from '../../Components/DeliveryOption';
 import CartProductCard from '../../Components/CartProductCard';
 import ButtonLarge from '../../Components/ButtonLarge';
+import { useSelector, useDispatch } from 'react-redux';
+import { calculatePriceTotal, decreaseQuantity, filterCart, increaseQuantity } from '../../app/productSlice';
 
 function CartPage() {
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.products.products);
+    const cartItems = useSelector((state) => state.products.cartItems);
+    const priceTotal = useSelector((state) => state.products.priceTotal);
+
+    const handleQuantityIncrease = (item) => {
+        dispatch(increaseQuantity(item));
+        dispatch(calculatePriceTotal());
+    }
+
+    const handleQuantityDecrease = (item) => {
+        dispatch(decreaseQuantity(item));
+        dispatch(filterCart(item));
+        dispatch(calculatePriceTotal());
+    }
 
     return (
         <section className={style.cartPageContainer}>
@@ -15,10 +34,21 @@ function CartPage() {
                     <DeliveryOption title='Välj leverans:'/>
                 </section>
                 <section className={style.cartPageProductContainer}>
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
+                    {
+                        cartItems && 
+                            cartItems.map((item) => (
+                            <CartProductCard 
+                                onQuantityIncrease={() => handleQuantityIncrease(item)}
+                                onQuantityDecrease={() => handleQuantityDecrease(item)}
+                                name={item.itemName}
+                                quantity={item.quantity}
+                                price={item.price}
+                                key={item.id}
+                            />
+                    )
+                        /* const product = products.find(product => product.id === itemId);
+                        return product && <CartProductCard key={product.id} product={product} />; */
+                    )}
                 </section>
                 <section className={style.cartPageSummary}>
                     <aside className={style.cartPageSummaryInfo}>
@@ -28,7 +58,7 @@ function CartPage() {
                     <aside className={style.cartPageSummaryPrice}>
                         <section className={style.summaryPrice}>
                             <p>Orderkostnad</p>
-                            <p>250 kr</p>
+                            <p>{priceTotal} kr</p>
                         </section>
                         <section className={style.summaryPrice}>
                             <p>Leveransavgift</p>
@@ -36,7 +66,7 @@ function CartPage() {
                         </section>
                         <section className={style.summaryTotalPrice}>
                             <p>Totalt</p>
-                            <p>250 kr</p>
+                            <p>{priceTotal} kr</p>
                         </section>
                     </aside>
                     <ButtonLarge title='Gå till betalning' />

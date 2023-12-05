@@ -1,6 +1,7 @@
 import style from './Header.module.scss';
 import { useState } from 'react';
 import NavMenu from './NavMenu';
+import { Link } from 'react-router-dom';
 
 function Header() {
 
@@ -17,7 +18,10 @@ function Header() {
                     <img className={style.headerNamePizzaIcon} src="/svg/pizza-slice.svg" alt="pizza-slice-logo" />
                     <h1 className={style.headerNameH1}>Valhalla Pizza</h1>
                 </section>
-                <img className={style.headerCartIcon} src="/svg/cart.svg" alt="cart-icon" />
+                <Link to="/cart">
+                    <img className={style.headerCartIcon} src="/svg/cart.svg" alt="cart-icon" />
+                </Link>
+
             </header>
             {
                 showMenu
