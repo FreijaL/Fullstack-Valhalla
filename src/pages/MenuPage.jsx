@@ -8,29 +8,21 @@ import ProductCard from '../Components/ProductCard';
 import ProductInfo from '../Components/ProductInfo';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../app/productSlice';
+import { addToCart, calculatePriceTotal } from '../app/productSlice';
 
 
 function MenuPage() {
     
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.products);
-    const cartItems = useSelector((state) => state.cartItems);
+    const products = useSelector((state) => state.products.products);
+    const cartItems = useSelector((state) => state.products.cartItems);
+    const cartTotal = useSelector((state) => state.products.priceTotal);
     
     function handleAddToCart(product) {
         dispatch(addToCart(product));
-        console.log(product);
+        dispatch(calculatePriceTotal());
     };
-    // console.log("state:", products);
-
-    // const handleAddToCart = (product) => {
-    //     dispatch(addToCart(product)); // Assuming the payload is the product id
-        
-    // };
-
-
-    console.log(cartItems);
-
+    
     function sortProducts(products) {
         let sortedProducts = {
             pizzas: [],
@@ -40,7 +32,7 @@ function MenuPage() {
             desserts: []
         };
 
-        products.products.map((product) => {
+        products.map((product) => {
             switch(product.category) {
                 case "Pizza": 
                     sortedProducts.pizzas.push(product)
