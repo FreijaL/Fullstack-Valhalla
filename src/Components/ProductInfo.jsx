@@ -6,56 +6,25 @@ import CheckIngredients from '../Components/CheckIngredients';
 import ButtonSmall from '../Components/ButtonSmall';
 
 
-function ProductInfo() {
-    const [ingredients, setIngredients] = useState([]);
-
-    const state = useSelector((state) => {
-        return state;
-    });
-
-    useEffect(() => {
-        setIngredients(state.ingredients);
-    }, [state]);
-
-
-    
-    console.log(ingredients)
+function ProductInfo({product, closeModal}) {
 
     return(
         <section className={style.productInfoContainer}>
             <header className={style.productInfoHeader}>
-                <h2>Pizzans namn</h2>
-                <img src="./svg/cross.svg" alt="cross" />
+                <h2>{product.itemName}</h2>
+                <img src="./svg/cross.svg" alt="cross" onClick={closeModal}/>
             </header>
             <main className={style.productInfoMain}>
                 <section>
                     <h3>Ta bort</h3>
                     <section className={style.productInfoIngredients}>
-                        {
-                            ingredients &&
-                            ingredients.map((ingredient) => 
-                                <CheckIngredients 
-                                    key={ingredient.id} 
-                                    ingredient={ingredient}
-                                    name={ingredient.name}
-                                    id={ingredient.id}
-                                />)
-                        }
+                        
                     </section>
                 </section>
                 <section>
                     <h3>Lägg till</h3>
                     <section className={style.productInfoIngredients}>
-                        {
-                            ingredients &&
-                            ingredients.map((ingredient) => 
-                                <CheckIngredients 
-                                    key={ingredient.id} 
-                                    ingredient={ingredient} 
-                                    name={ingredient.name} 
-                                    price={ingredient.price} 
-                                />)
-                        }
+                       
                     </section>
                 </section>
                 <section className={style.productInfoMoreOptions}>
@@ -66,7 +35,7 @@ function ProductInfo() {
             <footer className={style.productInfoFooter}>
                 <ButtonSmall title='+ Lägg till' />
                 <section className={style.productInfoFooterPrize}>
-                    <p>Totalt: 100kr</p>
+                    <p>Totalt: {product.price}kr</p>
                 </section>
             </footer>
         </section>
