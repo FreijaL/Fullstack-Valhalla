@@ -34,8 +34,8 @@ const productSlice = createSlice({
         },
         decreaseQuantity: (state, action) => {
             const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
-                state.cartItems[itemIndex].quantity -= 1;
-                state.cartItems = [...state.cartItems];
+            state.cartItems[itemIndex].quantity -= 1;
+            state.cartItems = [...state.cartItems];
         },
         filterCart: (state, action) => {
             const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
