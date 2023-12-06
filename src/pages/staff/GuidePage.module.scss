@@ -1,2 +1,103 @@
+/*GuidePage.module.scss*/
+
 @use '../../variables.scss' as *;
 
+.guideContainer {
+    background-color: $primaryCream;
+    border-radius: 0px;
+    min-height: 100vh;
+    padding-top: 8rem;
+    width: 80%;
+}
+
+.guideTitle {
+    text-align: center;
+    font-family: $breadFont;
+}
+
+.guideList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: dense;
+    grid-template: "a b"
+        "a c";
+    padding: 1rem;
+    margin: 0 auto;
+
+    @media (max-width: 468px) {
+        grid-template-columns: 1fr;
+        grid-template: "a"
+            "b"
+            "c";
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template: "a b c"
+    }
+}
+
+.guideText {
+    font-family: $titleFont;
+}
+
+.guideCardWhite {
+    display: flex;
+    justify-content: center;
+    font-family: $breadFont;
+    color: black;
+    background-color: $primaryWhite;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.154);
+    padding: 0.5rem;
+    grid-area: a;
+    margin-right: 1rem;
+
+    @media (max-width: 468px) {
+        margin-right: 0
+    }
+
+
+}
+
+.guideCardYellow {
+    display: flex;
+    justify-content: center;
+    font-family: $breadFont;
+    color: black;
+    background-color: $primaryYellow;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.154);
+    padding: 0.5rem;
+    grid-area: c;
+
+}
+
+.guideCardRed {
+    display: flex;
+    justify-content: center;
+    font-family: $breadFont;
+    color: black;
+    background-color: $primaryRed;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.154);
+    padding: 0.5rem;
+    grid-area: b;
+
+
+    @media (min-width: 1024px) {
+        margin-right: 1rem;
+    }
+}
