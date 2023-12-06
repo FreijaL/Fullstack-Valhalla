@@ -120,14 +120,16 @@ function ServicePage() {
   };
   
     return (
-      <div className={style.serviceContainer}>
+      <>
         <Header />
-        <h2 className={style.serviceCounter}>Pågående ordrar: {totalNumberOfOrders}</h2>
-        <ServiceOrderList orders={orders} onOrderClick={handleOrderClick}/>
-        {selectedOrder && (
-        <ServiceOrderModal order={selectedOrder} onClose={handleCloseModal} />
-      )}
-      </div>
+        <div className={style.serviceContainer}>
+          <h2 className={style.serviceCounter}>Pågående ordrar: {totalNumberOfOrders}</h2>
+          <ServiceOrderList orders={orders} onOrderClick={handleOrderClick}/>
+          {selectedOrder && (
+          <ServiceOrderModal order={selectedOrder} onClose={handleCloseModal} />
+        )}
+        </div>
+      </>
     );
 };
 
