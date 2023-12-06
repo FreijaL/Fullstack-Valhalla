@@ -2,7 +2,6 @@
 
 import style from './CartPage.module.scss';
 import Header from '../../Components/Header';
-import ProductInfo from '../../Components/ProductInfo';
 import DeliveryOption from '../../Components/DeliveryOption';
 import CartProductCard from '../../Components/CartProductCard';
 import ButtonLarge from '../../Components/ButtonLarge';
@@ -45,9 +44,7 @@ function CartPage() {
                                 price={item.price}
                                 key={item.id}
                             />
-                    )
-                        /* const product = products.find(product => product.id === itemId);
-                        return product && <CartProductCard key={product.id} product={product} />; */
+                        )
                     )}
                 </section>
                 <section className={style.cartPageSummary}>
@@ -69,7 +66,7 @@ function CartPage() {
                             <p>{priceTotal} kr</p>
                         </section>
                     </aside>
-                    <ButtonLarge title='Gå till betalning' />
+                    <ButtonLarge onClick={() => handleNav()} title='Gå till betalning' />
                 </section>
 
             </main>
