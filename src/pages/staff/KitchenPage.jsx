@@ -97,11 +97,13 @@ function KitchenPage() {
 
 
   return (
-    <div className={style.kitchenContainer}>
+    <>
       <Header />
-      <h2 className={style.kitchenCounter}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfitems}</h2>
-      <KitchenOrderList orders={orders} />
-    </div>
+      <div className={style.kitchenContainer}>
+        <h2 className={style.kitchenCounter}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfitems}</h2>
+        <KitchenOrderList orders={orders} />
+      </div>
+    </>
   );
 };
 
