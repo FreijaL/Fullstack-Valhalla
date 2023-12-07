@@ -1,4 +1,5 @@
 import style from './CategoryScrollBar.module.scss';
+import { motion } from 'framer-motion';
 
 
 function CategoryScrollBar( {onCategoryChange} ) {

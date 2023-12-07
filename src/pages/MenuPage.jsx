@@ -88,13 +88,13 @@ function MenuPage() {
                 {sortedProducts &&
                     sortedProducts[activeCategory].map((product) => (
                         <ProductCard
-                        image={product.image}
-                        name={product.itemName}
-                        toppings={product.toppings}
-                        price={product.price}
-                        key={product.id}
-                        onClick={() => openProductInfo(product)}
-                        onAddToCart={() => handleAddToCart(product)}
+                            image={product.image}
+                            name={product.itemName}
+                            toppings={product.toppings}
+                            price={product.price}
+                            key={product.id}
+                            onClick={() => openProductInfo(product)}
+                            onAddToCart={() => handleAddToCart(product)}
                         />
                     ))
                 }
