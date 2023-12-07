@@ -13,12 +13,10 @@ function PaymentPage() {
 
     const handleCustomerNameInput = (event) => {
         dispatch(addCustomerNameToOrder(event.target.value));
-        console.log(orderData);
     }
 
     const handleCustomerPhoneInput = (event) => {
         dispatch(addCustomerPhoneToOrder(event.target.value));
-        console.log(orderData);
     }
 
     const order = {
