@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Order.module.scss';
+import styles from './KitchenOrder.module.scss';
 
 const Order = ({ order }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const initialTime = order.timeRemaining; // Initial time in seconds
   const [elapsedTime, setElapsedTime] = useState(initialTime);
+  const [isOrderVisible, setIsOrderVisible] = useState(true);
 
   useEffect(() => {
     //Timer
@@ -25,26 +26,27 @@ const Order = ({ order }) => {
     return '';
   };
 
+  //Påbörja > Klar > Ta Bort
   const markAsCompleted = () => {
-    setIsCompleted(true);
-    // Additional logic to update the server state
+    if (!isCompleted) {
+      setIsCompleted(true);
+    } else {
+      setIsOrderVisible(false); 
+    }
   };
 
   //Byter ut utseendet på knappen
   const getButtonStyle = () => {
-    if (elapsedTime < 60) { 
-      return styles.startButton;
-    }
-    return styles.orderButton;
+    return isCompleted ? styles.orderButton : styles.startButton;
   };
 
-  //Timern för påbörja-knappen
+
+  // Ändrar texten inuti knappen
   const getButtonText = () => {
-    if (elapsedTime < 60) { 
-      return "Påbörja";
-    }
-    return "KLAR";
+    return isCompleted ? "KLAR" : "Påbörja";
   };
+
+  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig, detta borde animeras för snygghet
 
   // Formatera tiden på ordrarna
   const formatTime = () => {
@@ -59,21 +61,22 @@ const Order = ({ order }) => {
 
 
   // Tar emot addons eller removals, MÅSTE TA EMOT EN ARRAY OBS
+  //Error ValidateDOMNesting pga <p> fattar ej varför 
   const formatItem = (item) => {
     return (
       <>
-        <p className={styles.itemTitle}>
+        <div className={styles.itemTitle}>
           {item.name} x {item.quantity}
-        </p>
+        </div>
         {item.extras && (
-          <p className={styles.itemComment}>
+          <div className={styles.itemComment}>
             + {item.extras.join(' + ')}
-          </p>
+          </div>
         )}
         {item.removals && (
-          <p className={styles.itemComment}>
+          <div className={styles.itemComment}>
             - {item.removals.join(' - ')}
-          </p>
+          </div>
         )}
       </>
     );
@@ -81,13 +84,13 @@ const Order = ({ order }) => {
 
   //Beräknar totala mängden pizzor i ordern
   
-  const calculateTotalPizzas = (items) => {
+  const calculateTotalitems = (items) => {
     return items
-      .filter(item => item.category === 'pizza')
+      .filter(item => item.category === 'item')
       .reduce((total, item) => total + item.quantity, 0);
   };
 
-  const totalPizzas = calculateTotalPizzas(order.pizzas);
+  const totalitems = calculateTotalitems(order.items);
 
 
   return (
@@ -99,10 +102,10 @@ const Order = ({ order }) => {
         </div>
         <div className={styles.orderCardDetails}>
           <div className={styles.orderItems}>
-            {order.pizzas.map((pizza) => (
-              <div className={styles.itemContainer}  key={pizza.id}>
-                <p className={styles.itemTitle}>{formatItem(pizza)}</p>
-                <p className={styles.itemComment}>{pizza.comment}</p>
+            {order.items.map((item) => (
+              <div className={styles.itemContainer}  key={item.id}>
+                {formatItem(item)}
+                <p className={styles.itemComment}>{item.comment}</p>
               </div>
           ))}
           </div>

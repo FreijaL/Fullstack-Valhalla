@@ -1,9 +1,11 @@
+//MiniButton.jsx
+
 import style from './MiniButton.module.scss';
 
-function MiniButton() {
+function MiniButton({title, onClick}) {
 
     return(
-        <button className={style.miniButton}>+ Lägg till</button>
+        <button className={style.miniButton} onClick={onClick}>{title}</button>
     )
 };
 

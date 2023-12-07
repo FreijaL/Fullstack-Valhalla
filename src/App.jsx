@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import SplashPage from './pages/SplashPage';
 import MenuPage from './pages/MenuPage';
@@ -12,11 +13,29 @@ import ConfirmationPage from './pages/users/ConfirmationPage';
 import SignUpPage from './pages/users/SignUpPage';
 import AboutUsPage from './pages/users/AboutUsPage';
 
+import LandingPageStaff from './pages/staff/LandingPageStaff';
 import KitchenPage from './pages/staff/KitchenPage';
 import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
+import HistoryPage from './pages/staff/HistoryPage'
+import { fillIdCounter, fillStock } from './app/productSlice';
+import { useEffect } from 'react';
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/menu');
+      const products = await response.json();
+
+      dispatch(fillStock(products.products));
+      dispatch(fillIdCounter(products.products.length));
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -25,19 +44,20 @@ function App() {
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/productinfo" element={<ProductInfoPage />} />
         <Route path="/login" element={<LoginPage />} />
-
         <Route path="/cart" element={<CartPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
 
-        <Route path="/kitchen" element={<KitchenPage />} />
-        <Route path="/service" element={<ServicePage />} />
-        <Route path="/guide" element={<GuidePage />} />
+        <Route path='/staff' element={<LandingPageStaff />} />
+        <Route path="/staff/kitchen" element={<KitchenPage />} />
+        <Route path="/staff/service" element={<ServicePage />} />
+        <Route path="/staff/guide" element={<GuidePage />} />
+        <Route path="/staff/history" element={<HistoryPage />} />
       </Routes>
     </BrowserRouter>
   )
 }
 
-export default App
+export default App;

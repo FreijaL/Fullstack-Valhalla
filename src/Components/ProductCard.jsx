@@ -2,18 +2,18 @@ import style from './ProductCard.module.scss';
 import MiniButton from './MiniButton';
 
 
-function ProductCard() {
+function ProductCard({name, price, toppings, image, onClick, onAddToCart}) {
 
     return(
         <section className={style.productCardContainer}>
-            <img className={style.productCardImage} src="./images/pizza.png" alt="pizza" />
-            <section className={style.productCardInfo}>
-                <h3>Margarita</h3>
-                <p>Ost, tomatsås</p>
-                <h3>110 kr</h3>
+            <img className={style.productCardImage} src={image} alt={name} />
+            <section className={style.productCardInfo} onClick={onClick}>
+                <h3>{name}</h3>
+                <p>{toppings}</p>
+                <h3>{price} kr</h3>
             </section>
             <section className={style.productCardButton}>
-                <MiniButton />
+                <MiniButton title='+ Lägg till' onClick={onAddToCart}/>
             </section>
         </section>
     )

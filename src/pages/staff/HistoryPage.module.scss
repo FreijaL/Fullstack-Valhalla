@@ -1,0 +1,23 @@
+/* HistoryPage.module.scss */
+
+@use '../../variables.scss' as *;
+
+body {
+    background-color: $primaryCream;
+}
+
+h1 {
+    font-family: $titleFont;
+    text-align: center;
+}
+
+.historyContainer {
+    background-color: $primaryCream;
+    border-radius: 0px;
+    width: 80%;
+}
+
+.historySearch {
+    text-align: center;
+    font-family: $breadFont;
+}

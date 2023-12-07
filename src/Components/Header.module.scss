@@ -1,10 +1,15 @@
 @use '../variables' as *;
 
 .headerContainer {
+    position: fixed;
+    top: 0;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 1rem;
+    background-color: $primaryCream;
+    z-index: 10;
 }
 
 .headerMenuIcon {
@@ -13,7 +18,7 @@
 
 .headerName {
     display: flex;
-    gap: .8rem;
+    gap: .2rem;
     align-items: end;
     position: relative;
     top: -2px;

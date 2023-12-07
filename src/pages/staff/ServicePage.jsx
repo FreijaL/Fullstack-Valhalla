@@ -1,6 +1,7 @@
 import style from './ServicePage.module.scss';
-import React from 'react';
-import OrderList from '../../Components/OrderList';
+import React, { useState } from 'react';
+import ServiceOrderList from '../../Components/ServiceOrderList';
+import ServiceOrderModal from '../../Components/ServiceOrderModal';
 import Header from '../../Components/Header';
 
 function ServicePage() {
@@ -17,79 +18,118 @@ function ServicePage() {
   
     // State management behövs
    //Fixar statisk lista sålänge
-    const orders = [
-      {
-        id: '#58233',
-        timeRemaining: startTime1,
-        nr: '070-123 45 67', 
-        pizzas: [
-          { id: 'p1', name: 'Vesuvio x 1'},
-          { id: 'p2', name: 'Margherita x 1', comment: '+ Extra Ost' },
-        ],
-        isCompleted: false,
-        comment: 'Lägg den extra osten bredvid tack!'
-      },
-      {
-        id: '#58234',
-        timeRemaining: startTime2,
-        nr: '070-123 45 67', 
-        pizzas: [
-          { id: 'p4', name: 'Vesuvio x 1', comment: '- Ingen skinka' },
-          { id: 'p5', name: 'Hawaii x 2' },
-        ],
-        isCompleted: false,
-        comment: 'Mindre lök än vanligt, tack.'
-      },
-      {
-        id: '#58235',
-        timeRemaining: startTime3,
-        pizzas: [
-          { id: 'p7', name: 'Capricciosa x 2' },
-          { id: 'p8', name: 'Kebabpizza x 1' },
-        ],
-        isCompleted: true,
-        comment: ''
-      },
-      {
-        id: '#58236',
-        timeRemaining: startTime4,
-        nr: '070-123 45 67', 
-        pizzas: [
-          { id: 'p9', name: 'Quattro Stagioni x 1' },
-          { id: 'p10', name: 'Calzone x 1' },
-        ],
-        isCompleted: false,
-        comment: 'Extra napkins please.'
-      },
-      {
-        id: '#58237',
-        timeRemaining: startTime5,
-        nr: '070-123 45 67', 
-        pizzas: [
-          { id: 'p11', name: 'Funghi x 3' },
-        ],
-        isCompleted: false,
-        comment: 'Ring the doorbell loudly, please.'
-      },
-      {
-        id: '#58238',
-        timeRemaining: startTime6,
-        nr: '070-123 45 67', 
-        pizzas: [
-          { id: 'p12', name: 'Pepperoni x 2' },
-          { id: 'p13', name: 'Marinara x 1' },
-          { id: 'p14', name: 'Extra pepperoni' },
-        ],
-        isCompleted: false,
-        comment: 'Leave at the doorstep if no answer.'
-      }
-    ];
+   const orders = [
+    {
+      id: '#58233',
+      phoneNr: '070-123 45 67',
+      timeRemaining: startTime1,
+      items: [
+        { id: 'p1', name: 'Vesuvio', category: 'pizza', quantity: 1},
+        { id: 'p2', name: 'Margherita', extras: ['Extra Ost'], category: 'pizza', quantity: 1},
+        { id: 'p3', name: 'Pepsi Max', category: 'Drink', quantity: 2}
+      ],
+      isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
+      comment: 'Lägg den extra osten bredvid tack!'
+    },
+    {
+      id: '#58234',
+      phoneNr: '070-123 45 67',
+      timeRemaining: startTime2,
+      items: [
+        { id: 'p4', name: 'Vesuvio', removals: ['Ingen skinka'], category: 'pizza', quantity: 1 },
+        { id: 'p5', name: 'Hawaii', category: 'pizza', quantity: 2 },
+      ],
+      isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
+      comment: 'Mindre lök än vanligt, tack.'
+    },
+    {
+      id: '#58235',
+      phoneNr: '070-123 45 67',
+      timeRemaining: startTime3,
+      items: [
+        { id: 'p7', name: 'Capricciosa', category: 'pizza', quantity: 2 },
+        { id: 'p8', name: 'Kebabpizza', category: 'pizza', quantity: 1 },
+      ],
+      isCompleted: true,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
+      comment: ''
+    },
+    {
+      id: '#58236',
+      phoneNr: '070-123 45 67',
+      timeRemaining: startTime4,
+      items: [
+        { id: 'p9', name: 'Quattro Stagioni', category: 'pizza', quantity: 1  },
+        { id: 'p10', name: 'Calzone', category: 'pizza', quantity: 1  },
+      ],
+      isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
+      comment: 'Extra napkins please.'
+    },
+    {
+      id: '#58237',
+      phoneNr: '070-123 45 67',
+      timeRemaining: startTime5,
+      items: [
+        { id: 'p11', name: 'Funghi', category: 'pizza', quantity: 3 },
+      ],
+      isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
+      comment: 'Ring the doorbell loudly, please.'
+    },
+    {
+      id: '#58238',
+      phoneNr: '070-123 45 67',
+      timeRemaining: startTime6,
+      items: [
+        { id: 'p12', name: 'Pepperoni', category: 'pizza', quantity: 2 },
+        { id: 'p13', name: 'Marinara', category: 'pizza', quantity: 1 },
+        { id: 'p14', name: 'Vesuvio', category: 'pizza', quantity: 1 },
+      ],
+      isCompleted: false,
+      date: '8/11/23 kl 14:43',
+      name: 'Knut Kundsson',
+      total: 300,
+      comment: 'Leave at the doorstep if no answer.'
+    }
+  ];
+
+  const totalNumberOfOrders = orders.length;
+
+  //Modal för extra orderinfo
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const handleOrderClick = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedOrder(null);
+  };
   
     return (
-      <div className={style.serviceContainer}>
+      <>
         <Header />
-        <OrderList orders={orders} />
-      </div>
+        <div className={style.serviceContainer}>
+          <h2 className={style.serviceCounter}>Pågående ordrar: {totalNumberOfOrders}</h2>
+          <ServiceOrderList orders={orders} onOrderClick={handleOrderClick}/>
+          {selectedOrder && (
+          <ServiceOrderModal order={selectedOrder} onClose={handleCloseModal} />
+        )}
+        </div>
+      </>
     );
 };
 
