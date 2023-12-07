@@ -1,10 +1,10 @@
 import style from './ButtonLarge.module.scss';
 
 
-function ButtonLarge({title, action}) {
+function ButtonLarge({title, action, onClick}) {
 
     return(
-        <button className={style.buttonLarge}>{title}</button>
+        <button className={style.buttonLarge} onClick={onClick} >{title}</button>
     )
 };
 

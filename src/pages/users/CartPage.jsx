@@ -2,16 +2,16 @@
 
 import style from './CartPage.module.scss';
 import Header from '../../Components/Header';
-import ProductInfo from '../../Components/ProductInfo';
 import DeliveryOption from '../../Components/DeliveryOption';
 import CartProductCard from '../../Components/CartProductCard';
 import ButtonLarge from '../../Components/ButtonLarge';
 import { useSelector, useDispatch } from 'react-redux';
 import { calculatePriceTotal, decreaseQuantity, filterCart, increaseQuantity } from '../../app/productSlice';
+import { addCommentToOrder } from '../../app/orderSlice';
+import { useNavigate } from 'react-router-dom';
 
 function CartPage() {
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.products.products);
     const cartItems = useSelector((state) => state.products.cartItems);
     const priceTotal = useSelector((state) => state.products.priceTotal);
 
@@ -25,6 +25,12 @@ function CartPage() {
         dispatch(filterCart(item));
         dispatch(calculatePriceTotal());
     }
+
+    const handleCommentInput = (event) => {
+        dispatch(addCommentToOrder(event.target.value));
+    };
+
+    const navigate = useNavigate();
 
     return (
         <section className={style.cartPageContainer}>
@@ -45,15 +51,13 @@ function CartPage() {
                                 price={item.price}
                                 key={item.id}
                             />
-                    )
-                        /* const product = products.find(product => product.id === itemId);
-                        return product && <CartProductCard key={product.id} product={product} />; */
+                        )
                     )}
                 </section>
                 <section className={style.cartPageSummary}>
                     <aside className={style.cartPageSummaryInfo}>
                         <label>Kommentar till köket:</label>
-                        <textarea className={style.inputInfoToKitchen} />
+                        <textarea className={style.inputInfoToKitchen} onInput={handleCommentInput} />
                     </aside>
                     <aside className={style.cartPageSummaryPrice}>
                         <section className={style.summaryPrice}>
@@ -69,7 +73,7 @@ function CartPage() {
                             <p>{priceTotal} kr</p>
                         </section>
                     </aside>
-                    <ButtonLarge title='Gå till betalning' />
+                    <ButtonLarge onClick={() => navigate("/payment")} title='Gå till betalning' />
                 </section>
 
             </main>
