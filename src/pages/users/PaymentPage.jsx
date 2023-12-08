@@ -36,8 +36,6 @@ function PaymentPage() {
             },
         };
 
-        console.log(order);
-
         dispatch(addOrderNumber(order.orderNumber));
 
         fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/order', {
@@ -48,10 +46,14 @@ function PaymentPage() {
             body: JSON.stringify(order),
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.message == "Success!") {
+                navigate("/confirmation");
+            } else {
+                console.log("Failure");
+            }
+        })
         .catch(error => console.error('Error', error));
-
-        navigate("/confirmation");
     }
 
     return (
