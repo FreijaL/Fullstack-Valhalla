@@ -1,8 +1,9 @@
-//KitchenPage.jsx
+//Historypage.jsx
 
 import style from './HistoryPage.module.scss';
 import React from 'react';
-import OrderList from '../../Components/KitchenOrderList';
+import OrderList from '../../Components/HistoryOrderList';
+import Search from '../../Components/HistorySearch'
 import Header from '../../Components/Header';
 
 function HistoryPage() {
@@ -24,7 +25,7 @@ function HistoryPage() {
     {
       id: '#58233',
       timeRemaining: startTime1,
-      pizzas: [
+      items: [
         { id: 'p1', name: 'Vesuvio', category: 'pizza', quantity: 1},
         { id: 'p2', name: 'Margherita', extras: ['Extra Ost'], category: 'pizza', quantity: 1},
       ],
@@ -34,7 +35,7 @@ function HistoryPage() {
     {
       id: '#58234',
       timeRemaining: startTime2,
-      pizzas: [
+      items: [
         { id: 'p4', name: 'Vesuvio', removals: ['Ingen skinka'], category: 'pizza', quantity: 1 },
         { id: 'p5', name: 'Hawaii', category: 'pizza', quantity: 2 },
       ],
@@ -44,7 +45,7 @@ function HistoryPage() {
     {
       id: '#58235',
       timeRemaining: startTime3,
-      pizzas: [
+      items: [
         { id: 'p7', name: 'Capricciosa', category: 'pizza', quantity: 2 },
         { id: 'p8', name: 'Kebabpizza', category: 'pizza', quantity: 1 },
       ],
@@ -54,7 +55,7 @@ function HistoryPage() {
     {
       id: '#58236',
       timeRemaining: startTime4,
-      pizzas: [
+      items: [
         { id: 'p9', name: 'Quattro Stagioni', category: 'pizza', quantity: 1  },
         { id: 'p10', name: 'Calzone', category: 'pizza', quantity: 1  },
       ],
@@ -64,7 +65,7 @@ function HistoryPage() {
     {
       id: '#58237',
       timeRemaining: startTime5,
-      pizzas: [
+      items: [
         { id: 'p11', name: 'Funghi', category: 'pizza', quantity: 3 },
       ],
       isCompleted: false,
@@ -73,7 +74,7 @@ function HistoryPage() {
     {
       id: '#58238',
       timeRemaining: startTime6,
-      pizzas: [
+      items: [
         { id: 'p12', name: 'Pepperoni', category: 'pizza', quantity: 2 },
         { id: 'p13', name: 'Marinara', category: 'pizza', quantity: 1 },
         { id: 'p14', name: 'Vesuvio', category: 'pizza', quantity: 1 },
@@ -82,25 +83,17 @@ function HistoryPage() {
       comment: 'Leave at the doorstep if no answer.'
     }
   ];
-
-  const calculateTotalPizzas = (orders) => {
-    return orders.reduce((total, order) => {
-      const pizzasInOrder = order.pizzas || [];
-      const totalPizzasInOrder = pizzasInOrder.reduce((orderTotal, pizza) => orderTotal + pizza.quantity, 0);
-      return total + totalPizzasInOrder;
-    }, 0);
-  };
-
-  const totalNumberOfPizzas = calculateTotalPizzas(orders);
   const totalNumberOfOrders = orders.length;
 
 
 
   return (
-    <div className={style.historyContainer}>
+    <div className={style.historyPage}>
       <Header />
-      <h2 className={style.historySearch}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfPizzas}</h2>
+      <div className={style.historyContainer}>
+      <Search />
       <OrderList orders={orders} />
+      </div>
     </div>
   );
 };
