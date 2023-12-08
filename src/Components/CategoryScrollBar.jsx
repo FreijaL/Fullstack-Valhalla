@@ -1,12 +1,16 @@
 import style from './CategoryScrollBar.module.scss';
-import { motion } from 'framer-motion';
-
 
 function CategoryScrollBar( {onCategoryChange} ) {
 
+
+
     return(
-        <aside className={style.categoryScrollBarContainer}>
-            <section className={style.categoryCard} onClick={() => onCategoryChange('pizzas')}>
+        <aside 
+            className={style.categoryScrollBarContainer}>
+            <section 
+                className={style.categoryCard} 
+                onClick={() => onCategoryChange('pizzas')}
+            >
                 <section className={style.categoryCardImageContainer}>
                     <img className={style.categoryCardImage} src="./images/pizza.png" alt="pizza-category" />
                 </section>

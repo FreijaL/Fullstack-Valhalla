@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import style from './MenuPage.module.scss';
+import { motion } from 'framer-motion'
 import Header from '../Components/Header';
 import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
@@ -86,7 +87,7 @@ function MenuPage() {
             />
             <main className={style.menuPageMain}>
                 {sortedProducts &&
-                    sortedProducts[activeCategory].map((product) => (
+                    sortedProducts[activeCategory].map((product, i) => (
                         <ProductCard
                             image={product.image}
                             name={product.itemName}
@@ -95,6 +96,7 @@ function MenuPage() {
                             key={product.id}
                             onClick={() => openProductInfo(product)}
                             onAddToCart={() => handleAddToCart(product)}
+                            i={i}
                         />
                     ))
                 }

@@ -69,7 +69,7 @@ function CartPage() {
                             <p>{priceTotal} kr</p>
                         </section>
                     </aside>
-                    <ButtonLarge title='Gå till betalning' />
+                    <ButtonLarge link={'/payment'} title='Gå till betalning' />
                 </section>
 
             </main>

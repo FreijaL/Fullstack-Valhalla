@@ -22,15 +22,15 @@
     gap: 1rem;
 }
 
-.mainLinkItem {
-    width: 100%;
-    @include flex-column;
-    background-color: $primaryOrange;
-    border-radius: $primaryBorderRadius;
-    padding: 2rem;
-    text-decoration: none;
-    color: white;
-}
+// .mainLinkItem {
+//     width: 100%;
+//     @include flex-column;
+//     background-color: $primaryOrange;
+//     border-radius: $primaryBorderRadius;
+//     padding: 2rem;
+//     text-decoration: none;
+//     color: white;
+// }
 
 .mainLinkItem:visited {
     color: white;

@@ -1,48 +1,33 @@
 import { NavLink } from 'react-router-dom';
 import style from './NavMenu.module.scss';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import {motion } from 'framer-motion'; 
 
 function NavMenu() {
 
     const [showMenu, setShowMenu] = useState(true);
 
-    const navMenuAlternative = {
-        normal: {
-            scale: 1,
-            color: rgb(255, 255, 255),
-            x: 0
-        },
-        hover: {
-            scale: 1.2,
-            color: rgb(253, 244, 231),
-            x: 10
-        }
-    }
 
     return (
         <>
             {
                 showMenu &&
                 <nav className={style.navMenuContainer}>
-                    <img 
+                    <motion.img 
                         onClick={() => setShowMenu(prevstate => !prevstate)}
-                        className={style.cross} src="/svg/cross.svg" alt="cross-option" />
+                        className={style.cross} 
+                        src="/svg/cross.svg" 
+                        alt="cross-option" 
+                        initial={{ scale: 1}}
+                        whileHover={{ scale: 1.3}}
+                    />
                     { window.location.pathname.includes('/staff') ? 
                     <ul className={style.navList}>
-                        <motion.NavLink 
-                            className={style.navListItem} 
-                            to="/staff" 
-
-                            variants={navMenuAlternative} 
-                            initial={normal}
-                            animation={hover}
-                        >Hem
-                        </motion.NavLink>
-                        <NavLink className={style.navListItem} to="/staff/kitchen">Köket</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/service">Kassan</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/history">Orderhistorik</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/guide" >Snabbguide</NavLink>
+                        <NavLink className={style.navListItem} to="/staff" >Hem</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/kitchen" >Köket</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/service" >Kassan</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/history" >Orderhistorik</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/guide"  >Snabbguide</NavLink>
                     </ul> : 
                     <ul className={style.navList}>
                         <NavLink className={style.navListItem} to="/menu" >Meny</NavLink>
