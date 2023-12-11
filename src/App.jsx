@@ -19,7 +19,7 @@ import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
 import HistoryPage from './pages/staff/HistoryPage'
 import { fillIdCounter, fillStock } from './app/productSlice';
-import { getOrderHistory } from './app/staffSlice';
+import { filterKitchenStatus, getOrderHistory } from './app/staffSlice';
 import { useEffect } from 'react';
 
 

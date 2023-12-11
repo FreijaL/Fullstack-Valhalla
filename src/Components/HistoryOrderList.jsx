@@ -1,11 +1,10 @@
 import React from 'react';
 import style from './HistoryOrderList.module.scss';
 import Order from './HistoryOrder';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const HistoryOrderList = () => {
-
-  const orderHistory = useSelector((state) => state.staff.orderHistory)
+  const orderHistory = useSelector((state) => state.staff.orderHistory);
   console.log(orderHistory);
 
     return (
