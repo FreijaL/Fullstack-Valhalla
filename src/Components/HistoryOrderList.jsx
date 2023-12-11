@@ -1,13 +1,20 @@
 import React from 'react';
 import style from './HistoryOrderList.module.scss';
 import Order from './HistoryOrder';
+import { useSelector } from 'react-redux';
 
-const HistoryOrderList = ({ orders }) => {
+const HistoryOrderList = () => {
+
+  const orderHistory = useSelector((state) => state.staff.orderHistory)
+  console.log(orderHistory);
+
     return (
         <div className={style.orderList}>
-        {orders.map((order) => (
+        {orderHistory &&
+        orderHistory.map((order, i) => (
           <Order key={order.id} order={order} />
-        ))}
+        ))
+        }
       </div>
     )
 }

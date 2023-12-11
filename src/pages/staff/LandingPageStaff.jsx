@@ -4,6 +4,8 @@ import MenuStaffButton from '../../Components/MenuStaffButton';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+// onClick={()=> navigate("/staff/kitchen")}
+
 
 function LandingPageStaff() {
 
