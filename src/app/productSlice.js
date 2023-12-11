@@ -55,6 +55,6 @@ const productSlice = createSlice({
     },
 })
 
-export const {fillStock, fillIdCounter, addToCart, calculatePriceTotal, increaseQuantity, decreaseQuantity, filterCart } = productSlice.actions
+export const { fillStock, fillIdCounter, addToCart, calculatePriceTotal, increaseQuantity, decreaseQuantity, filterCart } = productSlice.actions
 
 export default productSlice.reducer
