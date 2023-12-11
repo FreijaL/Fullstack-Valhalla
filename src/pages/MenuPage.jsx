@@ -1,6 +1,6 @@
 //MenuPage.jsx
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './MenuPage.module.scss';
 import { motion } from 'framer-motion'
 import Header from '../Components/Header';
@@ -80,6 +80,16 @@ function MenuPage() {
         setOpenInfo(false);
     }
 
+    const [cartQuantity, setCartQuantity] = useState(0);
+
+    useEffect(() => {
+        setCartQuantity(cartItems.length);
+        console.log(cartItems.length);
+    }, [cartItems])
+
+
+    // i headern ev className={style.products (cartQuantity > 0 ? 'in-cart' : '')}
+    
     return (
         <section className={style.menuPageContainer}>
             <Header />
@@ -95,7 +105,7 @@ function MenuPage() {
                             price={product.price}
                             key={product.id}
                             onClick={() => openProductInfo(product)}
-                            onAddToCart={() => handleAddToCart(product)}
+                            onAddToCart={() => {handleAddToCart(product);}}
                             i={i}
                         />
                     ))
