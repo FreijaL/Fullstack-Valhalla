@@ -1,7 +1,9 @@
 import style from './AboutUsPage.module.scss';
+import { motion } from 'framer-motion';
 import Header from '../../Components/Header';
 
 function AboutUsPage() {
+
 
     return (
         <>
@@ -32,9 +34,9 @@ function AboutUsPage() {
                         <section className={style.aboutPageContactSection}>
                             <h4>Följ oss:</h4>
                             <section className={style.aboutPageContactSectionLogo}>
-                                <img src="./svg/twitter-logo.svg" alt="Twitter logo" />
-                                <img src="./svg/facebook-logo.svg" alt="Facebook logo" />
-                                <img src="./svg/instagram-logo.svg" alt="Instagram logo" />
+                                <motion.img whileHover={{ scale: 1.4, cursor: 'pointer'}} src="./svg/twitter-logo.svg" alt="Twitter logo" />
+                                <motion.img whileHover={{ scale: 1.4, cursor: 'pointer'}} src="./svg/facebook-logo.svg" alt="Facebook logo" />
+                                <motion.img whileHover={{ scale: 1.4, cursor: 'pointer'}} src="./svg/instagram-logo.svg" alt="Instagram logo" />
                             </section>
                         </section>
                     </section>
