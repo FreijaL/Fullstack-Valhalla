@@ -11,8 +11,10 @@ const HistoryOrderList = () => {
     return (
         <div className={style.orderList}>
         {orderHistory &&
-        orderHistory.map((order, i) => (
-          <Order key={order.id} order={order} />
+        orderHistory.map((order) => (
+          <Order 
+          key={order.id} 
+          order={order} />
         ))
         }
       </div>

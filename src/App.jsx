@@ -43,7 +43,7 @@ function App() {
         const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/orders');
         const orderHistory = await response.json();
   
-        dispatch(getOrderHistory(orderHistory));
+        dispatch(getOrderHistory(orderHistory.orders));
       }
   
       fetchData();
