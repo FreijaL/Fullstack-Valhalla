@@ -3,10 +3,7 @@ import styles from './KitchenOrder.module.scss';
 
 const Order = ({ order }) => {
   const [isCompleted, setIsCompleted] = useState(false);
-  let orderTime = new Date(order.orderDate);
-  let currentTime = new Date();
-  let timeDifference = currentTime - orderTime;
-  const initialTime = Math.floor(timeDifference / 1000);
+  const initialTime = order.timeRemaining; // Initial time in seconds
   const [elapsedTime, setElapsedTime] = useState(initialTime);
   const [isOrderVisible, setIsOrderVisible] = useState(true);
 
@@ -33,26 +30,8 @@ const Order = ({ order }) => {
   const markAsCompleted = () => {
     if (!isCompleted) {
       setIsCompleted(true);
-      console.log(order.id);
     } else {
-      console.log(order.id);
-
-      fetch(`https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/order/${order.id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ "progress": "InProgress" }),
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.message == "Success!") {
-          setIsOrderVisible(false); 
-        } else {
-            console.log("Failure");
-        }
-      })
-      .catch(error => console.error('Error', error));
+      setIsOrderVisible(false); 
     }
   };
 
@@ -87,28 +66,38 @@ const Order = ({ order }) => {
     return (
       <>
         <div className={styles.itemTitle}>
-          {item.itemName} x {item.quantity}
+          {item.name} x {item.quantity}
         </div>
+        {item.extras && (
+          <div className={styles.itemComment}>
+            + {item.extras.join(' + ')}
+          </div>
+        )}
+        {item.removals && (
+          <div className={styles.itemComment}>
+            - {item.removals.join(' - ')}
+          </div>
+        )}
       </>
     );
   };
 
   //Beräknar totala mängden pizzor i ordern
   
-  // const calculateTotalitems = (items) => {
-  //   return items
-  //     .filter(item => item.category === 'item')
-  //     .reduce((total, item) => total + item.quantity, 0);
-  // };
+  const calculateTotalitems = (items) => {
+    return items
+      .filter(item => item.category === 'item')
+      .reduce((total, item) => total + item.quantity, 0);
+  };
 
-  // const totalitems = calculateTotalitems(order.items);
+  const totalitems = calculateTotalitems(order.items);
 
 
   return (
     <div className={styles.orderCardContainer}>
       <div className={`${styles.orderCard} ${isCompleted ? styles.orderCardCompleted : ''} ${getTimeColor()}`}>
         <div className={styles.orderCardHeader}>
-          <span>#{order.orderNumber}</span>
+          <span>{order.id}</span>
           <span>{formatTime()}</span>
         </div>
         <div className={styles.orderCardDetails}>
@@ -116,11 +105,12 @@ const Order = ({ order }) => {
             {order.items.map((item) => (
               <div className={styles.itemContainer}  key={item.id}>
                 {formatItem(item)}
+                <p className={styles.itemComment}>{item.comment}</p>
               </div>
           ))}
           </div>
           <p className={styles.commentTitle}>Kommentar från kund:</p>
-          <p className={styles.commentBread}>{order.orderComment}</p>
+          <p className={styles.commentBread}>{order.comment}</p>
         </div>
         <button className={getButtonStyle()} onClick={markAsCompleted}>{getButtonText()}</button>
       </div>

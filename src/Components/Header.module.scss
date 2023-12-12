@@ -16,14 +16,12 @@
     width: 45px;
 }
 
-.headerName, .headerName:active {
+.headerName {
     display: flex;
     gap: .2rem;
     align-items: end;
     position: relative;
     top: -2px;
-    text-decoration: none;
-    color: black;
 }
 
 .headerNamePizzaIcon {
