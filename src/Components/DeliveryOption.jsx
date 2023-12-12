@@ -16,8 +16,7 @@ function DeliveryOption({title}) {
         <section className={style.deliveryOptionContainer}>
         <label htmlFor="delivery">{title}</label>
             <select name="delivery" id="delivery" value={selectedOption} onChange={handleChange}>
-                <option value="" disabled>Select an option</option>
-                <option value="pickup">Hämtas</option>
+                <option value="pickup" default>Hämtas</option>
                 <option value="eatIn">Äta här</option>
             </select>
         </section>

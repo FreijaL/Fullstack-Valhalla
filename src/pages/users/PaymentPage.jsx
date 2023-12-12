@@ -4,6 +4,7 @@ import DeliveryOption from '../../Components/DeliveryOption';
 import LoginField from '../../Components/LoginField';
 import ButtonLarge from '../../Components/ButtonLarge';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { addCustomerNameToOrder, addCustomerPhoneToOrder, addOrderNumber } from '../../app/orderSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -56,9 +57,15 @@ function PaymentPage() {
         .catch(error => console.error('Error', error));
     }
 
+    const [cartQuantity, setCartQuantity] = useState(0);
+
+    useEffect(() => {
+        setCartQuantity(cartItems.length);
+    }, [cartItems])
+
     return (
         <section className={style.paymentPageContainer}>
-            <Header />
+            <Header classnameCartItem={`${cartQuantity > 0 ? style.inCart : ''}`} cartQuantity={cartQuantity} />
             <main className={style.paymentPageMain}>
                 <DeliveryOption title='Välj leveranssätt:' />
                 <section className={style.paymentPageOptionContainer}>
