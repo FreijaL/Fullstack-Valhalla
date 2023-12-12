@@ -4,7 +4,8 @@ import DeliveryOption from '../../Components/DeliveryOption';
 import LoginField from '../../Components/LoginField';
 import ButtonLarge from '../../Components/ButtonLarge';
 import { useSelector, useDispatch } from 'react-redux';
-import { addCustomerNameToOrder, addCustomerPhoneToOrder } from '../../app/orderSlice';
+import { addCustomerNameToOrder, addCustomerPhoneToOrder, addOrderNumber } from '../../app/orderSlice';
+import { useNavigate } from 'react-router-dom';
 
 function PaymentPage() {
     const dispatch = useDispatch();
@@ -13,25 +14,30 @@ function PaymentPage() {
 
     const handleCustomerNameInput = (event) => {
         dispatch(addCustomerNameToOrder(event.target.value));
-        console.log(orderData);
     }
 
     const handleCustomerPhoneInput = (event) => {
         dispatch(addCustomerPhoneToOrder(event.target.value));
-        console.log(orderData);
     }
 
-    const order = {
-        "items": cartItems,
-        "orderComment": orderData.orderComment,
-        "customerInfo": {
-            "customerName": orderData.customerInfo.customerName,
-            "customerPhone": orderData.customerInfo.customerPhone
-        },
-    };
+    const navigate = useNavigate();
 
     const handleOrder = () => {
-        console.log(order);
+        let timeStamp = Date.now().toString();
+        let orderNumber = timeStamp.slice(-5);
+
+        const order = {
+            "orderNumber": orderNumber,
+            "items": cartItems,
+            "orderComment": orderData.orderComment,
+            "customerInfo": {
+                "customerName": orderData.customerInfo.customerName,
+                "customerPhone": orderData.customerInfo.customerPhone
+            },
+        };
+
+        dispatch(addOrderNumber(order.orderNumber));
+
         fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/order', {
             method: 'POST',
             headers: {
@@ -40,7 +46,13 @@ function PaymentPage() {
             body: JSON.stringify(order),
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.message == "Success!") {
+                navigate("/confirmation");
+            } else {
+                console.log("Failure");
+            }
+        })
         .catch(error => console.error('Error', error));
     }
 
@@ -75,7 +87,7 @@ function PaymentPage() {
                         <LoginField type='number' label='CVV:' id='card-cvv' name='card-cvv' />
                     </section>
                 </form>
-                <ButtonLarge title='Betala' onClick={handleOrder} />
+                <ButtonLarge title='Betala' onClick={() => handleOrder()} />
             </main>
         </section>
     )

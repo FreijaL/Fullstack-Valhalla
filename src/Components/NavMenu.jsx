@@ -1,26 +1,33 @@
 import { NavLink } from 'react-router-dom';
 import style from './NavMenu.module.scss';
 import { useState } from 'react';
+import {motion } from 'framer-motion'; 
 
 function NavMenu() {
 
     const [showMenu, setShowMenu] = useState(true);
+
 
     return (
         <>
             {
                 showMenu &&
                 <nav className={style.navMenuContainer}>
-                    <img 
+                    <motion.img 
                         onClick={() => setShowMenu(prevstate => !prevstate)}
-                        className={style.cross} src="/svg/cross.svg" alt="cross-option" />
+                        className={style.cross} 
+                        src="/svg/cross.svg" 
+                        alt="cross-option" 
+                        initial={{ scale: 1}}
+                        whileHover={{ scale: 1.3}}
+                    />
                     { window.location.pathname.includes('/staff') ? 
                     <ul className={style.navList}>
                         <NavLink className={style.navListItem} to="/staff" >Hem</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/kitchen">Köket</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/service">Kassan</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/history">Orderhistorik</NavLink>
-                        <NavLink className={style.navListItem} to="/staff/guide" >Snabbguide</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/kitchen" >Köket</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/service" >Kassan</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/history" >Orderhistorik</NavLink>
+                        <NavLink className={style.navListItem} to="/staff/guide"  >Snabbguide</NavLink>
                     </ul> : 
                     <ul className={style.navList}>
                         <NavLink className={style.navListItem} to="/menu" >Meny</NavLink>

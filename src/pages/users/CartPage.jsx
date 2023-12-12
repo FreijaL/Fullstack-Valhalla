@@ -73,7 +73,7 @@ function CartPage() {
                             <p>{priceTotal} kr</p>
                         </section>
                     </aside>
-                    <ButtonLarge onClick={() => navigate("/payment")} title='Gå till betalning' />
+                    <ButtonLarge onClick={()=> navigate("/payment")} title='Gå till betalning' />
                 </section>
 
             </main>

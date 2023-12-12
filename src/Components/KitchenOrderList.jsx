@@ -2,12 +2,16 @@
 import React from 'react';
 import Order from './KitchenOrder';
 import style from './KitchenOrderList.module.scss'
+import { useSelector } from 'react-redux';
 
 //Hela orderlistan som mappas in
-const OrderList = ({ orders }) => {
+const OrderList = () => {
+  const kitchenOrders = useSelector((state) => state.staff.kitchenOrders)
+
   return (
     <div className={style.orderList}>
-      {orders.map((order) => (
+      {kitchenOrders &&
+      kitchenOrders.map((order) => (
         <Order key={order.id} order={order} />
       ))}
     </div>

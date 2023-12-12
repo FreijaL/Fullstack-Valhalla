@@ -32,6 +32,13 @@
     color: black;
 }
 
+.navListItem:hover {
+    color: $primaryCream;
+    scale: 1.2;
+    transform: translateX(15px);
+    transition-delay: 1;
+}
+
 .navListLogin {
     align-self: end;
     padding: 12.5rem 1.2rem;
