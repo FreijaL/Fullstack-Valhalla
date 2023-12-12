@@ -1,10 +1,9 @@
 import style from './ServicePage.module.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import ServiceOrderList from '../../Components/ServiceOrderList';
-import ServiceOrderModal from '../../Components/ServiceOrderModal';
 import Header from '../../Components/Header';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterServiceStatus } from '../../app/staffSlice';
 
 function ServicePage() {
@@ -20,31 +19,17 @@ function ServicePage() {
 
     fetchData();
   }, []);
+
+  const serviceOrders = useSelector((state) => state.staff.serviceOrders)
   
-  // const totalNumberOfOrders = orders.length;
-
-  //Modal för extra orderinfo
-  // const [selectedOrder, setSelectedOrder] = useState(null);
-
-  // const handleOrderClick = (order) => {
-  //   setSelectedOrder(order);
-  // };
-
-  // const handleCloseModal = () => {
-  //   setSelectedOrder(null);
-  // };
+  const totalNumberOfOrders = serviceOrders.length;
   
     return (
       <>
         <Header />
         <div className={style.serviceContainer}>
-          {/* <h2 className={style.serviceCounter}>Pågående ordrar: {totalNumberOfOrders}</h2> */}
-          <ServiceOrderList 
-          // onOrderClick={handleOrderClick}
-          />
-          {/* {selectedOrder && (
-          <ServiceOrderModal order={selectedOrder} onClose={handleCloseModal} />
-        )} */}
+          <h2 className={style.serviceCounter}>Pågående ordrar: {totalNumberOfOrders}</h2>
+          <ServiceOrderList/>
         </div>
       </>
     );

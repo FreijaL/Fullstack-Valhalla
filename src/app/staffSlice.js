@@ -4,6 +4,7 @@ const initialState = {
     orderHistory: [],
     kitchenOrders: [],
     serviceOrders: [],
+    pizzaCount: 0,
 };
 
 const staffSlice = createSlice({
@@ -23,9 +24,17 @@ const staffSlice = createSlice({
             .filter((item) => item.progress === "InProgress")
             .sort((a, b) => new Date(a.orderDate) - new Date(b.orderDate));
         },
+        calculatePizzaInKitchen: (state, action) => {
+            state.pizzaCount = state.kitchenOrders
+            .flatMap((order) => order.items)
+            .filter((item) => item.category === "Pizza")
+            .reduce((accumulator, currentItem) => {
+                return accumulator + currentItem.quantity;
+            }, 0);
+        }
     },
 })
 
-export const { getOrderHistory, filterKitchenStatus, filterServiceStatus } = staffSlice.actions
+export const { getOrderHistory, filterKitchenStatus, filterServiceStatus, calculatePizzaInKitchen } = staffSlice.actions
 
 export default staffSlice.reducer
