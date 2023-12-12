@@ -19,7 +19,6 @@ import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
 import HistoryPage from './pages/staff/HistoryPage'
 import { fillIdCounter, fillStock } from './app/productSlice';
-import { filterKitchenStatus, getOrderHistory } from './app/staffSlice';
 import { useEffect } from 'react';
 
 
@@ -37,17 +36,6 @@ function App() {
 
     fetchData();
   }, []);
-  
-    useEffect(() => {
-      async function fetchData() {
-        const response = await fetch('https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/orders');
-        const orderHistory = await response.json();
-  
-        dispatch(getOrderHistory(orderHistory.orders));
-      }
-  
-      fetchData();
-    }, []);
 
   return (
     <BrowserRouter>

@@ -1,10 +1,6 @@
 import style from './LandingPageStaff.module.scss';
 import Header from '../../Components/Header';
-import MenuStaffButton from '../../Components/MenuStaffButton';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-
-// onClick={()=> navigate("/staff/kitchen")}
 
 
 function LandingPageStaff() {
@@ -15,10 +11,10 @@ function LandingPageStaff() {
             <main className={style.landingPageMainContainer}>
                 <h2>Välkommen till jobbet!</h2>
                 <section className={style.mainLinkContainer}>
-                    <MenuStaffButton link='/staff/kitchen' title='Köket' i='1'/>
-                    <MenuStaffButton link='/staff/service' title='Kassan' i='2'/>
-                    <MenuStaffButton link='/staff/history' title='Orderhistorik' i='3'/>
-                    <MenuStaffButton link='/staff/guide' title='Snabbguide' i='4'/>
+                    <Link className={style.mainLinkItem} to='/staff/kitchen' >Köket</Link>
+                    <Link className={style.mainLinkItem} to='/staff/service' >Kassan</Link>
+                    <Link className={style.mainLinkItem} to='/staff/history' >Orderhistorik</Link>
+                    <Link className={style.mainLinkItem} to='/staff/guide' >Snabbguide</Link>
                 </section>
             </main>
         </>

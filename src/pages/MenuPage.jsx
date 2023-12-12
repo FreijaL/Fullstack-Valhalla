@@ -1,8 +1,7 @@
 //MenuPage.jsx
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import style from './MenuPage.module.scss';
-import { motion } from 'framer-motion'
 import Header from '../Components/Header';
 import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
@@ -80,16 +79,6 @@ function MenuPage() {
         setOpenInfo(false);
     }
 
-    const [cartQuantity, setCartQuantity] = useState(0);
-
-    useEffect(() => {
-        setCartQuantity(cartItems.length);
-        console.log(cartItems.length);
-    }, [cartItems])
-
-
-    // i headern ev className={style.products (cartQuantity > 0 ? 'in-cart' : '')}
-    
     return (
         <section className={style.menuPageContainer}>
             <Header />
@@ -97,16 +86,15 @@ function MenuPage() {
             />
             <main className={style.menuPageMain}>
                 {sortedProducts &&
-                    sortedProducts[activeCategory].map((product, i) => (
+                    sortedProducts[activeCategory].map((product) => (
                         <ProductCard
-                            image={product.image}
-                            name={product.itemName}
-                            toppings={product.toppings}
-                            price={product.price}
-                            key={product.id}
-                            onClick={() => openProductInfo(product)}
-                            onAddToCart={() => {handleAddToCart(product);}}
-                            i={i}
+                        image={product.image}
+                        name={product.itemName}
+                        toppings={product.toppings}
+                        price={product.price}
+                        key={product.id}
+                        onClick={() => openProductInfo(product)}
+                        onAddToCart={() => handleAddToCart(product)}
                         />
                     ))
                 }

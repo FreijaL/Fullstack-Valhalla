@@ -1,50 +1,108 @@
-// HistoryPage.jsx
-import React, { useState, useEffect } from 'react';
+//KitchenPage.jsx
+
 import style from './HistoryPage.module.scss';
-import OrderList from '../../Components/HistoryOrderList';
-import Search from '../../Components/HistorySearch';
+import React from 'react';
+import OrderList from '../../Components/KitchenOrderList';
 import Header from '../../Components/Header';
-import { useSelector } from 'react-redux';
 
 function HistoryPage() {
-  //Tar in alla ordrar från Redux
-  const orders = useSelector((state) => state.staff.orderHistory);
-  //Termen som ska användas till sökfilter
-  const [searchTerm, setSearchTerm] = useState('');
-  //Filtrerade listan som skall returneras
-  const [filteredOrders, setFilteredOrders] = useState([]);
+  const startTime = 0;
+
+  //For testing purposes
+  const startTime1 = 29 * 60 + 55;
+  const startTime2 = 14 * 60 + 54;
+  const startTime3 = 10 * 60;
+  const startTime4 = 5 * 60;
+  const startTime5 = 4 * 60 + 45;
+  const startTime6 = 52;
 
 
-  //Sökfilter
-  useEffect(() => {
-    const lowercasedFilter = searchTerm.toLowerCase();
-    const filteredData = orders.filter((order) => {
-      
-      // Kollar ifall söktermen matchar ett ordernummer
-      const orderMatches = order.orderNumber.toLowerCase().includes(lowercasedFilter)
+  // BEHÖVER LÖSA STATE MANAGEMENT MED REDUX 
 
-      // Kollar ifall söktermen matchar någon produkt
-      const itemsMatch = order.items && order.items.some(item => 
-        item.itemName.toLowerCase().includes(lowercasedFilter) || 
-        (item.comment && item.comment.toLowerCase().includes(lowercasedFilter))
-      );
+ //Fixar statisk lista sålänge
+  const orders = [
+    {
+      id: '#58233',
+      timeRemaining: startTime1,
+      pizzas: [
+        { id: 'p1', name: 'Vesuvio', category: 'pizza', quantity: 1},
+        { id: 'p2', name: 'Margherita', extras: ['Extra Ost'], category: 'pizza', quantity: 1},
+      ],
+      isCompleted: false,
+      comment: 'Lägg den extra osten bredvid tack!'
+    },
+    {
+      id: '#58234',
+      timeRemaining: startTime2,
+      pizzas: [
+        { id: 'p4', name: 'Vesuvio', removals: ['Ingen skinka'], category: 'pizza', quantity: 1 },
+        { id: 'p5', name: 'Hawaii', category: 'pizza', quantity: 2 },
+      ],
+      isCompleted: false,
+      comment: 'Mindre lök än vanligt, tack.'
+    },
+    {
+      id: '#58235',
+      timeRemaining: startTime3,
+      pizzas: [
+        { id: 'p7', name: 'Capricciosa', category: 'pizza', quantity: 2 },
+        { id: 'p8', name: 'Kebabpizza', category: 'pizza', quantity: 1 },
+      ],
+      isCompleted: true,
+      comment: ''
+    },
+    {
+      id: '#58236',
+      timeRemaining: startTime4,
+      pizzas: [
+        { id: 'p9', name: 'Quattro Stagioni', category: 'pizza', quantity: 1  },
+        { id: 'p10', name: 'Calzone', category: 'pizza', quantity: 1  },
+      ],
+      isCompleted: false,
+      comment: 'Extra napkins please.'
+    },
+    {
+      id: '#58237',
+      timeRemaining: startTime5,
+      pizzas: [
+        { id: 'p11', name: 'Funghi', category: 'pizza', quantity: 3 },
+      ],
+      isCompleted: false,
+      comment: 'Ring the doorbell loudly, please.'
+    },
+    {
+      id: '#58238',
+      timeRemaining: startTime6,
+      pizzas: [
+        { id: 'p12', name: 'Pepperoni', category: 'pizza', quantity: 2 },
+        { id: 'p13', name: 'Marinara', category: 'pizza', quantity: 1 },
+        { id: 'p14', name: 'Vesuvio', category: 'pizza', quantity: 1 },
+      ],
+      isCompleted: false,
+      comment: 'Leave at the doorstep if no answer.'
+    }
+  ];
 
-      //Returnerar en order till filtret antingen baserat på ordernummer eller produktnamn
-      return orderMatches || itemsMatch;
-    });
+  const calculateTotalPizzas = (orders) => {
+    return orders.reduce((total, order) => {
+      const pizzasInOrder = order.pizzas || [];
+      const totalPizzasInOrder = pizzasInOrder.reduce((orderTotal, pizza) => orderTotal + pizza.quantity, 0);
+      return total + totalPizzasInOrder;
+    }, 0);
+  };
 
-    setFilteredOrders(filteredData);
-  }, [searchTerm, orders]);
+  const totalNumberOfPizzas = calculateTotalPizzas(orders);
+  const totalNumberOfOrders = orders.length;
+
+
 
   return (
-    <div className={style.historyPage}>
+    <div className={style.historyContainer}>
       <Header />
-      <div className={style.historyContainer}>
-        <Search onSearch={setSearchTerm} searchTerm={searchTerm} />
-        <OrderList orders={filteredOrders} />
-      </div>
+      <h2 className={style.historySearch}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfPizzas}</h2>
+      <OrderList orders={orders} />
     </div>
   );
-}
+};
 
 export default HistoryPage;

@@ -2,7 +2,6 @@ import style from './Header.module.scss';
 import { useState } from 'react';
 import NavMenu from './NavMenu';
 import { Link } from 'react-router-dom';
-import { easeInOut, easeOut, motion } from 'framer-motion';
 
 function Header() {
 
@@ -11,37 +10,16 @@ function Header() {
     return (
         <>
             <header className={style.headerContainer}>
-                <motion.img 
+                <img 
                     onClick={() => setShowMenu(prevstate => !prevstate)}
-                    className={style.headerMenuIcon} 
-                    src="/svg/ham-menu.svg" 
-                    alt="ham-menu-icon"
-
-                    initial={{ scale: 1}}
-                    whileHover={{ scale: 1.3, cursor: 'pointer' }}
+                    className={style.headerMenuIcon} src="/svg/ham-menu.svg" alt="ham-menu-icon"
                 />
-                <Link 
-                    className={style.headerName}
-                    to="/menu"
-                >
-                    <motion.img 
-                        className={style.headerNamePizzaIcon} 
-                        src="/svg/pizza-slice.svg" alt="pizza-slice-logo" 
-
-                        initial={{ y: 0}}
-                        whileHover={{ y: [-10, 0, -10], transition:{repeat: Infinity, duration: .8 }}}
-                    />
+                <section className={style.headerName}>
+                    <img className={style.headerNamePizzaIcon} src="/svg/pizza-slice.svg" alt="pizza-slice-logo" />
                     <h1 className={style.headerNameH1}>Valhalla Pizza</h1>
-                </Link>
+                </section>
                 <Link to="/cart">
-                    <motion.img 
-                        className={style.headerCartIcon} 
-                        src="/svg/cart.svg" 
-                        alt="cart-icon" 
-                    
-                        initial={{ scale: 1}}
-                        whileHover={{ scale: 1.3}}
-                    />
+                    <img className={style.headerCartIcon} src="/svg/cart.svg" alt="cart-icon" />
                 </Link>
 
             </header>
