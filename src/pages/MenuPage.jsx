@@ -84,32 +84,32 @@ function MenuPage() {
 
     useEffect(() => {
         setCartQuantity(cartItems.length);
-        console.log(cartItems.length);
     }, [cartItems])
 
 
-    // i headern ev className={style.products (cartQuantity > 0 ? 'in-cart' : '')}
-    
     return (
         <section className={style.menuPageContainer}>
-            <Header />
+            <Header classnameCartItem={`${cartQuantity > 0 ? style.inCart : ''}`} cartQuantity={cartQuantity} />
             <CategoryScrollBar onCategoryChange={handleCategoryChange}
             />
             <main className={style.menuPageMain}>
-                {sortedProducts &&
-                    sortedProducts[activeCategory].map((product, i) => (
-                        <ProductCard
-                            image={product.image}
-                            name={product.itemName}
-                            toppings={product.toppings}
-                            price={product.price}
-                            key={product.id}
-                            onClick={() => openProductInfo(product)}
-                            onAddToCart={() => {handleAddToCart(product);}}
-                            i={i}
-                        />
-                    ))
-                }
+                <section className={style.menuPageProductContainer}>
+                    {sortedProducts &&
+                        sortedProducts[activeCategory].map((product, i) => (
+                            <ProductCard
+                                image={product.image}
+                                name={product.itemName}
+                                toppings={product.toppings}
+                                price={product.price}
+                                key={product.id}
+                                onClick={() => openProductInfo(product)}
+                                onAddToCart={() => {handleAddToCart(product);}}
+                                i={i}
+                            />
+                        ))
+                    }
+
+                </section>
             </main>
             { openInfo ? (
                 <ProductInfo

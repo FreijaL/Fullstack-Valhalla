@@ -36,6 +36,16 @@
     font-weight: 500;
 }
 
+a:link, a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.cartIconContainer {
+    display: flex;
+    align-items: center;
+}
+
 .headerCartIcon {
     width: 35px;
 }

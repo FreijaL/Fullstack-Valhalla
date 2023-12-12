@@ -8,7 +8,7 @@ function MiniButton({title, onClick}) {
             className={style.miniButton} 
             onClick={onClick}
             initial={{ scale: 1 }}
-            whileHover={{ color: 'black'}}
+            whileHover={{ color: 'rgb(0, 0, 0)'}}
             whileTap={{ scale: 0.95, boxShadow: '0px 2px 4px 0px rgba(26, 26, 26, 0.5)' }}
         >{title}
         </motion.button>
