@@ -27,14 +27,11 @@ const ServiceOrder = ({ order, onOrderClick }) => {
 
   //Ändra färg baserat på timer
   const getTimeColor = () => {
-    if (!isCompleted) { // Check if the order is not completed
       if (elapsedTime >= 1800) { 
         return styles.timeRed;
       } else if (elapsedTime >= 900) { 
         return styles.timeYellow;
       }
-    }
-    return ''; // Return default style if the order is completed
   };
 
   //Servera > Klar > Ta Bort
