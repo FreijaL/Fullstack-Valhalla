@@ -1,18 +1,18 @@
 //KitchenPage.jsx
-
 import style from './KitchenPage.module.scss';
 import React from 'react';
 import KitchenOrderList from '../../Components/KitchenOrderList';
 import Header from '../../Components/Header';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterKitchenStatus } from '../../app/staffSlice';
+import { calculatePizzaInKitchen, filterKitchenStatus } from '../../app/staffSlice';
 import { useEffect } from 'react';
 
 function KitchenPage() {
   const dispatch = useDispatch();
 
   const kitchenOrders = useSelector((state) => state.staff.kitchenOrders)
-  console.log("Kitchen:",kitchenOrders);
+  const pizzaCount = useSelector((state) => state.staff.pizzaCount)
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -24,28 +24,21 @@ function KitchenPage() {
 
     fetchData();
   }, []);
-  
-  // BEHÖVER LÖSA STATE MANAGEMENT MED REDUX 
 
+  useEffect(() => {
+    if (kitchenOrders.length > 0) {
+      dispatch(calculatePizzaInKitchen())
+    }
+  }, [kitchenOrders]);
 
-  // const calculateTotalitems = (orders) => {
-  //   return orders.reduce((total, order) => {
-  //     const itemsInOrder = order.items || [];
-  //     const totalitemsInOrder = itemsInOrder.reduce((orderTotal, pizza) => orderTotal + pizza.quantity, 0);
-  //     return total + totalitemsInOrder;
-  //   }, 0);
-  // };
-
-  // const totalNumberOfitems = calculateTotalitems(orders);
-  // const totalNumberOfOrders = orders.length;
-
-
+  const totalNumberOfitems = pizzaCount;
+  const totalNumberOfOrders = kitchenOrders.length;
 
   return (
     <>
       <Header />
       <div className={style.kitchenContainer}>
-        <h2 className={style.kitchenCounter}>Pågående ordrar: {} - Antal Pizzor: {}</h2>
+        <h2 className={style.kitchenCounter}>Pågående ordrar: {totalNumberOfOrders} - Antal Pizzor: {totalNumberOfitems}</h2>
         <KitchenOrderList/>
       </div>
     </>

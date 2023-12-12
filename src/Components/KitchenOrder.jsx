@@ -26,17 +26,13 @@ const Order = ({ order }) => {
     } else if (elapsedTime >= 900) { 
       return styles.timeYellow;
     }
-    return '';
   };
 
   //Påbörja > Klar > Ta Bort
   const markAsCompleted = () => {
     if (!isCompleted) {
       setIsCompleted(true);
-      console.log(order.id);
     } else {
-      console.log(order.id);
-
       fetch(`https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/order/${order.id}`, {
         method: 'PUT',
         headers: {
