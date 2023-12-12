@@ -7,17 +7,32 @@ import Header from '../../Components/Header';
 import { useSelector } from 'react-redux';
 
 function HistoryPage() {
+  //Tar in alla ordrar från Redux
   const orders = useSelector((state) => state.staff.orderHistory);
+  //Termen som ska användas till sökfilter
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredOrders, setFilteredOrders] = useState(orders);
+  //Filtrerade listan som skall returneras
+  const [filteredOrders, setFilteredOrders] = useState([]);
 
+
+  //Sökfilter
   useEffect(() => {
     const lowercasedFilter = searchTerm.toLowerCase();
-    const filteredData = orders.filter((order) => (
-      order.orderNumber.toLowerCase().includes(lowercasedFilter) ||
-      order.orderComment.toLowerCase().includes(lowercasedFilter)
-      // Add more conditions here if needed
-    ));
+    const filteredData = orders.filter((order) => {
+      
+      // Kollar ifall söktermen matchar ett ordernummer
+      const orderMatches = order.orderNumber.toLowerCase().includes(lowercasedFilter)
+
+      // Kollar ifall söktermen matchar någon produkt
+      const itemsMatch = order.items && order.items.some(item => 
+        item.itemName.toLowerCase().includes(lowercasedFilter) || 
+        (item.comment && item.comment.toLowerCase().includes(lowercasedFilter))
+      );
+
+      //Returnerar en order till filtret antingen baserat på ordernummer eller produktnamn
+      return orderMatches || itemsMatch;
+    });
+
     setFilteredOrders(filteredData);
   }, [searchTerm, orders]);
 
