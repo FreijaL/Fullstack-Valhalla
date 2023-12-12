@@ -36,8 +36,12 @@
     font-weight: 500;
 }
 
+a:link, a:visited{
+    text-decoration: none;
+    color: black;
+}
+
 .cartIconContainer {
-    // padding-top: 2rem;
     display: flex;
     align-items: center;
 }

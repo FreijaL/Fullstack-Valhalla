@@ -87,8 +87,6 @@ function MenuPage() {
     }, [cartItems])
 
 
-    // i headern ev className={style.products (cartQuantity > 0 ? 'in-cart' : '')}
-
     return (
         <section className={style.menuPageContainer}>
             <Header classnameCartItem={`${cartQuantity > 0 ? style.inCart : ''}`} cartQuantity={cartQuantity} />
