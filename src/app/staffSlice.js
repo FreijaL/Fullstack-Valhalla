@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     orderHistory: [],
     kitchenOrders: [],
-    serviceOrder: [],
+    serviceOrders: [],
 };
 
 const staffSlice = createSlice({
@@ -18,9 +18,14 @@ const staffSlice = createSlice({
             .filter((item) => item.progress === "Pending")
             .sort((a, b) => new Date(a.orderDate) - new Date(b.orderDate));
         },
+        filterServiceStatus: (state, action) => {
+            state.serviceOrders = action.payload
+            .filter((item) => item.progress === "InProgress")
+            .sort((a, b) => new Date(a.orderDate) - new Date(b.orderDate));
+        },
     },
 })
 
-export const { getOrderHistory, filterKitchenStatus } = staffSlice.actions
+export const { getOrderHistory, filterKitchenStatus, filterServiceStatus } = staffSlice.actions
 
 export default staffSlice.reducer

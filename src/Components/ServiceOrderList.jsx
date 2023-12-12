@@ -2,12 +2,18 @@
 import React from 'react';
 import ServiceOrder from './ServiceOrder';
 import style from './ServiceOrderList.module.scss'
+import { useSelector } from 'react-redux';
 
 //Hela orderlistan som mappas in
-const ServiceOrderList = ({ orders, onOrderClick }) => {
+const ServiceOrderList = ({ onOrderClick }) => {
+
+  const serviceOrders = useSelector((state) => state.staff.serviceOrders)
+  console.log(serviceOrders);
+
   return (
     <div className={style.orderList}>
-      {orders.map((order) => (
+      {serviceOrders &&
+      serviceOrders.map((order) => (
         <ServiceOrder key={order.id} order={order} onOrderClick={onOrderClick} />
       ))}
     </div>
