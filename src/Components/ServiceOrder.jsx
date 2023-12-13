@@ -11,8 +11,8 @@ const ServiceOrder = ({ order, onOrderClick }) => {
   const [isOrderVisible, setIsOrderVisible] = useState(true);
 
   const handleButtonClick = (event) => {
-    event.stopPropagation(); // Prevent click event from bubbling up
-    setIsCompleted(prevState => !prevState); // Toggle the completed state
+    event.stopPropagation();
+    setIsCompleted(prevState => !prevState);
     markAsCompleted();
   };
 
@@ -58,7 +58,7 @@ const ServiceOrder = ({ order, onOrderClick }) => {
     }
   };
 
-  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig, detta borde animeras för snygghet
+  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig
 
   //Ändrar utseende på knapp vid klick
   const getButtonStyle = () => {
@@ -82,7 +82,6 @@ const ServiceOrder = ({ order, onOrderClick }) => {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
-    // Tar emot addons eller removals, MÅSTE TA EMOT EN ARRAY OBS
     const formatItem = (item) => {
       return (
         <>

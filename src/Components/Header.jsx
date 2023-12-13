@@ -2,22 +2,12 @@ import style from './Header.module.scss';
 import { useState } from 'react';
 import NavMenu from './NavMenu';
 import { Link } from 'react-router-dom';
-import { easeInOut, easeOut, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 
 function Header({classnameCartItem, cartQuantity}) {
     const [showMenu, setShowMenu] = useState(false);
-    // const [cartObject, setCartObject] = useState(0)
-    
-    // function cartObjectQuantity(cartQuantity) {
-    //     if(cartQuantity > 0){
-    //         setCartObject(cartQuantity);
-    //     } else {
-    //         console.log('No items in cart');
-    //     }
-    // }
 
-    // console.log(cartQuantity, cartObject);
     return (
         <>
             <header className={style.headerContainer}>

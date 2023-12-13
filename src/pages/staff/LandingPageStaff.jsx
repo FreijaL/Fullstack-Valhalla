@@ -1,11 +1,6 @@
 import style from './LandingPageStaff.module.scss';
 import Header from '../../Components/Header';
 import MenuStaffButton from '../../Components/MenuStaffButton';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-
-// onClick={()=> navigate("/staff/kitchen")}
-
 
 function LandingPageStaff() {
 

@@ -1,5 +1,3 @@
-//HistoryOrder.jsx
-
 import React from 'react';
 import styles from './HistoryOrder.module.scss';
 import moment from 'moment';

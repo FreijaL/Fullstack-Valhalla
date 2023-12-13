@@ -16,7 +16,6 @@
 }
 
 .productCardContainer:hover {
-    //cursor: pointer;
     scale: 1.02;
 }
 
@@ -44,10 +43,8 @@
     font-family: $breadFont;
     height: auto;
     max-width: 12rem;
-    //width: 12rem;
 }
 
 .productCardButton {
     align-self: end;
 }
-

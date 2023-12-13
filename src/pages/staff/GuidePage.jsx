@@ -1,5 +1,3 @@
-//GuidePage.jsx
-
 import style from './GuidePage.module.scss';
 import Header from '../../Components/Header';
 

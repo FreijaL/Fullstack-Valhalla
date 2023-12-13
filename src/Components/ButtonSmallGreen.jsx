@@ -1,7 +1,7 @@
 import style from './ButtonSmallGreen.module.scss';
 import { motion } from 'framer-motion';
 
-function ButtonSmallGreen({ title, action}) {
+function ButtonSmallGreen({ title }) {
 
     return(
         <motion.button 

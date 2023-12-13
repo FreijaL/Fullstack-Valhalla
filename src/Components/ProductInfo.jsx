@@ -1,8 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-
 import style from './ProductInfo.module.scss';
-import CheckIngredients from '../Components/CheckIngredients';
 import ButtonSmall from '../Components/ButtonSmall';
 
 

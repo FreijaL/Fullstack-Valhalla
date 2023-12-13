@@ -1,5 +1,3 @@
-//CartPage.jsx
-
 import style from './CartPage.module.scss';
 import Header from '../../Components/Header';
 import DeliveryOption from '../../Components/DeliveryOption';

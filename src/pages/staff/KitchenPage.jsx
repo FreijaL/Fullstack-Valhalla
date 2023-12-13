@@ -1,4 +1,3 @@
-//KitchenPage.jsx
 import style from './KitchenPage.module.scss';
 import React from 'react';
 import KitchenOrderList from '../../Components/KitchenOrderList';
