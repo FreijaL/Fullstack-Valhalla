@@ -3,10 +3,13 @@ import LoginField from '../Components/LoginField';
 import Header from '../Components/Header';
 import ButtonSmall from '../Components/ButtonSmall';
 import ButtonSmallGreen from '../Components/ButtonSmallGreen';
+import { useNavigate } from 'react-router';
+
 
 
 function LoginPage() {
 
+    const navigate = useNavigate();
 
 
     return (
@@ -19,7 +22,7 @@ function LoginPage() {
                     <LoginField label='Lösenord:' type='password' name='password' id='password' />
                     <p className={style.forgotPassword}>Glömt lösenord?</p>
 
-                    <ButtonSmallGreen title='Logga in' />
+                    <ButtonSmallGreen title='Logga in' onClick={() => navigate('/staff')} />
                     <ButtonSmall title='Skapa konto' />
                 </section>
             </main>
