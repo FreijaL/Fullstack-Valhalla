@@ -3,13 +3,16 @@ import styles from './ServiceOrder.module.scss';
 
 const ServiceOrder = ({ order, onOrderClick }) => {
   const [isCompleted, setIsCompleted] = useState(false);
-  const initialTime = order.timeRemaining;
+  let orderTime = new Date(order.orderDate);
+  let currentTime = new Date();
+  let timeDifference = currentTime - orderTime;
+  const initialTime = Math.floor(timeDifference / 1000);
   const [elapsedTime, setElapsedTime] = useState(initialTime);
   const [isOrderVisible, setIsOrderVisible] = useState(true);
 
   const handleButtonClick = (event) => {
-    event.stopPropagation(); // Prevent click event from bubbling up
-    setIsCompleted(prevState => !prevState); // Toggle the completed state
+    event.stopPropagation();
+    setIsCompleted(prevState => !prevState);
     markAsCompleted();
   };
 
@@ -24,14 +27,11 @@ const ServiceOrder = ({ order, onOrderClick }) => {
 
   //Ändra färg baserat på timer
   const getTimeColor = () => {
-    if (!isCompleted) { // Check if the order is not completed
       if (elapsedTime >= 1800) { 
         return styles.timeRed;
       } else if (elapsedTime >= 900) { 
         return styles.timeYellow;
       }
-    }
-    return ''; // Return default style if the order is completed
   };
 
   //Servera > Klar > Ta Bort
@@ -39,11 +39,26 @@ const ServiceOrder = ({ order, onOrderClick }) => {
     if (!isCompleted) {
       setIsCompleted(true);
     } else {
-      setIsOrderVisible(false); 
+      fetch(`https://1x78ct0zxk.execute-api.eu-north-1.amazonaws.com/api/order/${order.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ "progress": "Done" }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message == "Success!") {
+          setIsOrderVisible(false); 
+        } else {
+            console.log("Failure");
+        }
+      })
+      .catch(error => console.error('Error', error));
     }
   };
 
-  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig, detta borde animeras för snygghet
+  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig
 
   //Ändrar utseende på knapp vid klick
   const getButtonStyle = () => {
@@ -67,23 +82,12 @@ const ServiceOrder = ({ order, onOrderClick }) => {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
-    // Tar emot addons eller removals, MÅSTE TA EMOT EN ARRAY OBS
     const formatItem = (item) => {
       return (
         <>
           <div className={styles.itemTitle}>
-            {item.name} x {item.quantity}
+            {item.itemName} x {item.quantity}
           </div>
-          {item.extras && (
-            <div className={styles.itemComment}>
-              + {item.extras.join(' + ')}
-            </div>
-          )}
-          {item.removals && (
-            <div className={styles.itemComment}>
-              - {item.removals.join(' - ')}
-            </div>
-          )}
         </>
       );
     };
@@ -91,11 +95,11 @@ const ServiceOrder = ({ order, onOrderClick }) => {
     <div className={styles.orderCardContainer}>
       <div className={`${styles.orderCard} ${isCompleted ? styles.orderCardCompleted : ''} ${getTimeColor()}`} onClick={() => onOrderClick(order)}>
         <div className={styles.orderCardHeader}>
-          <span>{order.id}</span>
+          <span>#{order.orderNumber}</span>
           <span>{formatTime()}</span>
         </div>
         <div className={styles.orderCardPhone}>
-          <span>Telefon: {order.phoneNr}</span>
+          <span>Telefon: {order.customerInfo.customerPhone}</span>
         </div>
         <div className={styles.orderCardDetails}>
           <div className={styles.orderItems}>
@@ -107,7 +111,7 @@ const ServiceOrder = ({ order, onOrderClick }) => {
           ))}
           </div>
           <p className={styles.commentTitle}>Kommentar från kund:</p>
-          <p className={styles.commentBread}>{order.comment}</p>
+          <p className={styles.commentBread}>{order.orderComment}</p>
         </div>
         <button className={getButtonStyle()} onClick={handleButtonClick}>{getButtonText()}</button>
       </div>

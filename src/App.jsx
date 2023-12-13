@@ -4,13 +4,11 @@ import { useDispatch } from 'react-redux';
 
 import SplashPage from './pages/SplashPage';
 import MenuPage from './pages/MenuPage';
-import ProductInfoPage from './pages/ProductInfoPage';
 import LoginPage from './pages/LoginPage';
 
 import CartPage from './pages/users/CartPage';
 import PaymentPage from './pages/users/PaymentPage';
 import ConfirmationPage from './pages/users/ConfirmationPage';
-import SignUpPage from './pages/users/SignUpPage';
 import AboutUsPage from './pages/users/AboutUsPage';
 
 import LandingPageStaff from './pages/staff/LandingPageStaff';
@@ -19,6 +17,7 @@ import ServicePage from './pages/staff/ServicePage';
 import GuidePage from './pages/staff/GuidePage';
 import HistoryPage from './pages/staff/HistoryPage'
 import { fillIdCounter, fillStock } from './app/productSlice';
+import { getOrderHistory } from './app/staffSlice';
 import { useEffect } from 'react';
 
 
@@ -42,12 +41,10 @@ function App() {
       <Routes>
         <Route path="/" element={<SplashPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/productinfo" element={<ProductInfoPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
 
         <Route path='/staff' element={<LandingPageStaff />} />

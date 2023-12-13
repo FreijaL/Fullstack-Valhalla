@@ -3,13 +3,22 @@
 .paymentPageContainer {
     width: 100vw;
     background-color: $primaryCream;
-    padding: 1rem;
+
+    @media (min-width: 50rem) {
+        width: 100%;
+        @include flex-column;
+    }
 }
 
 .paymentPageMain {
-    margin-top: 10rem;
+    margin-top: 8rem;
     @include flex-column;
     gap: 2rem;
+    padding: 1rem;
+
+    @media (min-width: 50rem) {
+        width: 35rem;
+    }
 }
 
 .paymentPageMain p {
@@ -51,4 +60,18 @@
 .paymentPageFormSection {
     display: flex;
     gap: 1rem;
+}
+
+.inCart {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $primaryRed;
+    border-radius: 1rem;
+    position: relative;
+    top: -15px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }

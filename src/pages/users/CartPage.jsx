@@ -1,11 +1,10 @@
-//CartPage.jsx
-
 import style from './CartPage.module.scss';
 import Header from '../../Components/Header';
 import DeliveryOption from '../../Components/DeliveryOption';
 import CartProductCard from '../../Components/CartProductCard';
 import ButtonLarge from '../../Components/ButtonLarge';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { calculatePriceTotal, decreaseQuantity, filterCart, increaseQuantity } from '../../app/productSlice';
 import { addCommentToOrder } from '../../app/orderSlice';
 import { useNavigate } from 'react-router-dom';
@@ -32,9 +31,16 @@ function CartPage() {
 
     const navigate = useNavigate();
 
+
+    const [cartQuantity, setCartQuantity] = useState(0);
+
+    useEffect(() => {
+        setCartQuantity(cartItems.length);
+    }, [cartItems])
+
     return (
         <section className={style.cartPageContainer}>
-            <Header />
+            <Header classnameCartItem={`${cartQuantity > 0 ? style.inCart : ''}`} cartQuantity={cartQuantity} />
             <main className={style.cartPageMainContainer}>
                 <section className={style.cartPageDeliveryContainer}>
                     <DeliveryOption title='Välj leverans:'/>

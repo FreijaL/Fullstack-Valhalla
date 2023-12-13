@@ -6,6 +6,10 @@
     align-items: start; 
     background-color: $primaryCream;
     font-size: 16px;
+    @media (min-width: 50rem) {
+        width: 50rem;
+        padding-bottom: 5rem;
+    }
 }
 
 .aboutPageImage {

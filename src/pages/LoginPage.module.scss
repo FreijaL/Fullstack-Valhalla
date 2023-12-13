@@ -2,13 +2,18 @@
 
 .loginPageContainer {
     width: 100vw;
-    margin-top: 7rem;
+    margin-top: 4rem;
     background-color: $primaryCream;
+    @include flex-column;
 }
 
 .loginPageMain {
+    width: 100%;
     @include flex-column;
     gap: 1rem;
+    @media (min-width: 50rem) {
+        width: 50rem;
+    }
 }
 
 .loginPageLogo {

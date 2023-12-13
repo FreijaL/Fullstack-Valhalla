@@ -11,10 +11,36 @@
     padding: 2rem 1rem;
     background-color: $primaryWhite;
     @include flex-column;
+    justify-content: start;
+}
+
+.menuPageProductContainer {
+    width: 100%;
+    @include flex-column;
     gap: 1rem;
     justify-content: start;
+    @media(min-width: 55rem){
+        width: 65rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 5rem;
+    }
 }
 
 .orangeButton {
     background-color: $primaryOrange;
+}
+
+.inCart {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $primaryRed;
+    border-radius: 1rem;
+    position: relative;
+    top: -15px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }

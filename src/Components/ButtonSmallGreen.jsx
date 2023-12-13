@@ -1,6 +1,6 @@
 import style from './ButtonSmallGreen.module.scss';
 
-function ButtonSmallGreen({ title, action}) {
+function ButtonSmallGreen({ title }) {
 
     return(
         <button className={style.buttonSmall}>{title}</button>

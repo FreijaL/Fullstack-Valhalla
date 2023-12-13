@@ -30,9 +30,13 @@ function NavMenu() {
                         <NavLink className={style.navListItem} to="/aboutus" >Om oss</NavLink>
                     </ul>
                     } 
-                    <section className={style.navListLogin}>
+                    <motion.section 
+                        className={style.navListLogin}
+                        initial={{ scale: 1 }}
+                        whileHover={{ scale: 1.2}}
+                    >
                         <NavLink to="/login">Logga in</NavLink>
-                    </section>
+                    </motion.section>
                 </nav>
             }
         </>

@@ -38,6 +38,7 @@ $border-color: #e0e0e0;
     }
 
     &Completed {
+        background-color: $primaryRed;
         border-color: $highlight-color;
     }
 
@@ -100,4 +101,12 @@ $border-color: #e0e0e0;
 .commentBread {
     font-family: $breadFont;
     font-size: 12px;
+}
+
+.orderTotal {
+    font-family: $titleFont;
+    align-self: flex-end;
+    padding-right: 0.5rem;
+    font-weight: 500;
+    font-size: 24px;
 }

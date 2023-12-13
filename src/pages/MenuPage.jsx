@@ -1,6 +1,4 @@
-//MenuPage.jsx
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './MenuPage.module.scss';
 import Header from '../Components/Header';
 import CategoryScrollBar from '../Components/CategoryScrollBar';
@@ -16,7 +14,6 @@ function MenuPage() {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products.products);
     const cartItems = useSelector((state) => state.products.cartItems);
-    const cartTotal = useSelector((state) => state.products.priceTotal);
     
     function handleAddToCart(product) {
         dispatch(addToCart(product));
@@ -79,25 +76,36 @@ function MenuPage() {
         setOpenInfo(false);
     }
 
+    const [cartQuantity, setCartQuantity] = useState(0);
+
+    useEffect(() => {
+        setCartQuantity(cartItems.length);
+    }, [cartItems])
+
+
     return (
         <section className={style.menuPageContainer}>
-            <Header />
+            <Header classnameCartItem={`${cartQuantity > 0 ? style.inCart : ''}`} cartQuantity={cartQuantity} />
             <CategoryScrollBar onCategoryChange={handleCategoryChange}
             />
             <main className={style.menuPageMain}>
-                {sortedProducts &&
-                    sortedProducts[activeCategory].map((product) => (
-                        <ProductCard
-                        image={product.image}
-                        name={product.itemName}
-                        toppings={product.toppings}
-                        price={product.price}
-                        key={product.id}
-                        onClick={() => openProductInfo(product)}
-                        onAddToCart={() => handleAddToCart(product)}
-                        />
-                    ))
-                }
+                <section className={style.menuPageProductContainer}>
+                    {sortedProducts &&
+                        sortedProducts[activeCategory].map((product, i) => (
+                            <ProductCard
+                                image={product.image}
+                                name={product.itemName}
+                                toppings={product.toppings}
+                                price={product.price}
+                                key={product.id}
+                                onClick={() => openProductInfo(product)}
+                                onAddToCart={() => {handleAddToCart(product);}}
+                                i={i}
+                            />
+                        ))
+                    }
+
+                </section>
             </main>
             { openInfo ? (
                 <ProductInfo

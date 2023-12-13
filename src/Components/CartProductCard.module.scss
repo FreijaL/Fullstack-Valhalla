@@ -1,22 +1,24 @@
-@use '../variables' as *; 
+@use '../variables' as *;
 
-.cartProductCardContainer {
+.cartProductCardWrapper {
     width: 100%;
-    max-width: 30rem;
-    height: auto;
+    width: 100%;
     background-color: $primaryCream;
     border-radius: $primaryBorderRadius;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    column-gap: 7rem;
-    row-gap: .5rem;
-    padding: 1rem 0 0 1rem;
     font-size: 20px;
     font-weight: 500;
     font-family: $titleFont;
     box-shadow: $defaultShadow;
+    padding: 1rem 0 0  1rem;
+} 
+
+.cartProductCardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+    column-gap: auto;
 }
 
 .productExtraIngredient {
@@ -29,6 +31,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 20px;
+    padding-bottom: 1rem;
 }
 
 .changeValue button {

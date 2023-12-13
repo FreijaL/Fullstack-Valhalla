@@ -1,11 +1,13 @@
 @use '../variables' as *;
 
 .productCardContainer {
+    max-width: 35rem;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    row-gap: 1rem;
     padding-left: .5rem;
     padding-top: .5rem;
     background-color: $primaryCream;
@@ -14,13 +16,12 @@
 }
 
 .productCardContainer:hover {
-    //cursor: pointer;
     scale: 1.02;
 }
 
 .productCardImage {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     padding-bottom: .3rem;
 }
 
@@ -29,6 +30,7 @@
     flex-direction: column;
     align-items: start;
     gap: 1rem;
+    padding: 0 1rem;
 }
 
 .productCardInfo h3 {
@@ -40,13 +42,9 @@
 .productCardInfo p {
     font-family: $breadFont;
     height: auto;
-    width: 8rem;
+    max-width: 12rem;
 }
 
 .productCardButton {
     align-self: end;
 }
-
-// .productCardButton:hover {
-//     cursor: pointer;
-// }
