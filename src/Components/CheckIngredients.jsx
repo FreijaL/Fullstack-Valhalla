@@ -1,17 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-// import { buyIngredient } from '../actions/ingredientsAction';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
 import style from './CheckIngredients.module.scss';
 
 function CheckIngredients({name, price, id}) {
-    
-    
-    // function addIngredientToCart() { 
-    //     dispatch(buyIngredient(ingredients))
-    // };
 
     return(
         <form className={style.checkIngredientsForm}>

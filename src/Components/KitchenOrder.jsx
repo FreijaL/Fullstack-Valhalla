@@ -63,7 +63,7 @@ const Order = ({ order }) => {
     return isCompleted ? "KLAR" : "Påbörja";
   };
 
-  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig, detta borde animeras för snygghet
+  if (!isOrderVisible) return null; // När man klickar på KLAR så blir ordern osynlig
 
   // Formatera tiden på ordrarna
   const formatTime = () => {
@@ -77,8 +77,6 @@ const Order = ({ order }) => {
   };
 
 
-  // Tar emot addons eller removals, MÅSTE TA EMOT EN ARRAY OBS
-  //Error ValidateDOMNesting pga <p> fattar ej varför 
   const formatItem = (item) => {
     return (
       <>
@@ -88,17 +86,6 @@ const Order = ({ order }) => {
       </>
     );
   };
-
-  //Beräknar totala mängden pizzor i ordern
-  
-  // const calculateTotalitems = (items) => {
-  //   return items
-  //     .filter(item => item.category === 'item')
-  //     .reduce((total, item) => total + item.quantity, 0);
-  // };
-
-  // const totalitems = calculateTotalitems(order.items);
-
 
   return (
     <div className={styles.orderCardContainer}>

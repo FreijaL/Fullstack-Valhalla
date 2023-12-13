@@ -1,5 +1,3 @@
-//DeliveryOption.jsx
-
 import style from './DeliveryOption.module.scss';
 import React, { useState } from 'react';
 

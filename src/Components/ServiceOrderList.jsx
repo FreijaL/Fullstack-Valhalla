@@ -1,4 +1,3 @@
-// OrderList.js
 import React from 'react';
 import ServiceOrder from './ServiceOrder';
 import style from './ServiceOrderList.module.scss'

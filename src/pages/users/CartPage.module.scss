@@ -12,6 +12,10 @@
     padding: 1rem;
     @include flex-column;
     gap: 2rem;
+
+    @media (min-width: 50rem) {
+        width: 35rem;
+    }
 }
 
 .cartPageDeliveryContainer {

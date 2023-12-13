@@ -1,4 +1,3 @@
-// HistoryPage.jsx
 import React, { useState, useEffect } from 'react';
 import style from './HistoryPage.module.scss';
 import OrderList from '../../Components/HistoryOrderList';

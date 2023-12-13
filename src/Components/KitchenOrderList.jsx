@@ -1,4 +1,3 @@
-// OrderList.js
 import React from 'react';
 import Order from './KitchenOrder';
 import style from './KitchenOrderList.module.scss'

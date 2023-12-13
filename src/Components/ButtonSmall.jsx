@@ -1,7 +1,7 @@
 import style from './ButtonSmall.module.scss';
 import { motion } from 'framer-motion';
 
-function ButtonSmall({ title, action}) {
+function ButtonSmall({ title }) {
 
     return(
         <motion.button 

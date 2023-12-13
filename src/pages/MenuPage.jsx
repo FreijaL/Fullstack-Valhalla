@@ -1,8 +1,5 @@
-//MenuPage.jsx
-
 import { useEffect, useState } from 'react';
 import style from './MenuPage.module.scss';
-import { motion } from 'framer-motion'
 import Header from '../Components/Header';
 import CategoryScrollBar from '../Components/CategoryScrollBar';
 import ProductCard from '../Components/ProductCard';
@@ -17,7 +14,6 @@ function MenuPage() {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products.products);
     const cartItems = useSelector((state) => state.products.cartItems);
-    const cartTotal = useSelector((state) => state.products.priceTotal);
     
     function handleAddToCart(product) {
         dispatch(addToCart(product));
