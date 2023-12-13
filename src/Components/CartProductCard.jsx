@@ -3,7 +3,7 @@ import MiniButton from '../Components/MiniButton';
 
 
 function CartProductCard({price, name, quantity, onQuantityIncrease, onQuantityDecrease}) {
-
+ 
 
     return(
         <section className={style.cartProductCardWrapper}>
@@ -18,7 +18,7 @@ function CartProductCard({price, name, quantity, onQuantityIncrease, onQuantityD
                 </section>
             </section>
             <section className={style.cartProductCardContainer}>
-            <p className={style.productPriceTotal}>{price} kr</p>
+                <p className={style.productPriceTotal}>{price} kr</p>
                 <MiniButton title='Ändra' />
             </section>
         </section>
