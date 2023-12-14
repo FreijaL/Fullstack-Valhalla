@@ -1,8 +1,15 @@
-# React + Vite
+# Valhalla Pizzeria 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the final fullstack group project made by Diamond Vikings.
+We were tasked with creating a restaurant app suited for both customers and staff.
 
-Currently, two official plugins are available:
+## Functionality overview:
+For customers we've implemented functionality that lets them read the menu, add items to the cart, change quantities and place an order. 
+For staff we've implemented functionality that lets them see active orders aswell as order history, they can update the status of active orders with the simple press of a button. 
+There is also a page with a quick overview of how the system works for new workers to quickly get a grasp of the system.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Find the backend code here:
+https://github.com/Mercenaress/valhalla-backend
+
+## Webpage:
+https://fullstack-valhalla.vercel.app/menu
